@@ -11,48 +11,57 @@ Example Usage
 
 To get the name of each silver badge you've been awarded on [Stack Overflow][3]:
 
-    var client = new StackClientFactory().Create(_appKey, _token);
-    client.Default.Site = NetworkSiteEnum.StackOverflow;
-    var parameters = new BadgesOnUserQuery
-    {
-        Sort = QuerySortEnum.BadgeRank,
-        Min = BadgeRankEnum.Silver,
-        Max = BadgeRankEnum.Silver
-    };
-    var badges = client.GetMyBadges(parameters);
+```c#
+var client = new StackClientFactory().Create(_appKey, _token);
+client.Default.Site = NetworkSiteEnum.StackOverflow;
+var parameters = new BadgesOnUserQuery
+{
+    Sort = QuerySortEnum.BadgeRank,
+    Min = BadgeRankEnum.Silver,
+    Max = BadgeRankEnum.Silver
+};
+var badges = client.GetMyBadges(parameters);
 
-    foreach (var badge in badges.Unsafe)
-    {
-        Console.WriteLine(badge.Name);
-    }
-
+foreach (var badge in badges.Unsafe)
+{
+    Console.WriteLine(badge.Name);
+}
+```
 	
 Line by Line Explanation:
 -------------------------
 
-
-    var client = new StackClientFactory().Create(_appKey, _token);
+```c#
+var client = new StackClientFactory().Create(_appKey, _token);
+```
 A `StackClient` instance is created, passing in your application's key and the user's access token.
 
+```c#
     client.Default.Site = NetworkSiteEnum.StackOverflow;
+```
 A default is set so that all requests made through this client which require a target site use [Stack Overflow][4]
 
-    var parameters = new BadgesOnUserQuery
-    {
-        Sort = QuerySortEnum.BadgeRank,
-        Min = BadgeRankEnum.Silver,
-        Max = BadgeRankEnum.Silver
-    };
+```c#
+var parameters = new BadgesOnUserQuery
+{
+	Sort = QuerySortEnum.BadgeRank,
+	Min = BadgeRankEnum.Silver,
+	Max = BadgeRankEnum.Silver
+};
+```
 A query parameter object is created, using the `Rank` sort on badges, and setting the range to only `Silver` badges.
 
-    var badges = client.GetMyBadges(parameters);
+```c#
+var badges = client.GetMyBadges(parameters);
+```
 The API is accessed, and the user badges are received from [StackExchange][5].
 
-
-    foreach (var badge in badges.Unsafe)
-    {
-        Console.WriteLine(badge.Name);
-    }
+```c#
+foreach (var badge in badges.Unsafe)
+{
+	Console.WriteLine(badge.Name);
+}
+```
 The badges are then iterated, and their names are output to the console. Note that `Unsafe` only means that if a problem arises, `Unsafe` *can throw* an `Exception`. If we were using `Safe`, it would just have been `null`. This has to do with coding style, mostly.
 
 
