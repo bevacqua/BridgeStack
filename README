@@ -1,10 +1,12 @@
-#BridgeStack
+BridgeStack
+===========
 
 
 This is a [StackExchange][2] API v2.0 consumer library written under `C#`. It is heavily documented and designed to make it as easy as humanly possible to interact with the API.
 
 
-##Example Usage
+Example Usage
+-------------
 
 
 To get the name of each silver badge you've been awarded on [Stack Overflow][3]:
@@ -25,7 +27,8 @@ To get the name of each silver badge you've been awarded on [Stack Overflow][3]:
     }
 
 	
-##Line by Line Explanation:
+Line by Line Explanation:
+-------------------------
 
 
     var client = new StackClientFactory().Create(_appKey, _token);
@@ -53,7 +56,8 @@ The API is accessed, and the user badges are received from [StackExchange][5].
 The badges are then iterated, and their names are output to the console. Note that `Unsafe` only means that if a problem arises, `Unsafe` *can throw* an `Exception`. If we were using `Safe`, it would just have been `null`. This has to do with coding style, mostly.
 
 
-##About
+About
+-----
 
 
 I created this library as a way to give back to the [StackOverflow][3] community, which has helped me out and taught me on countless ocassions.  
