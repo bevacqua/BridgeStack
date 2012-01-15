@@ -2,9 +2,9 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
-using BridgeStack.DataContracts;
+using BridgeStack;
 
-namespace BridgeStack.Entity
+namespace BridgeStack
 {
 	/// <summary>
 	/// The complex query parameters class.

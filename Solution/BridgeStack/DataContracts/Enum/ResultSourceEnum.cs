@@ -1,6 +1,6 @@
-using BridgeStack.DataContracts.Json;
+using BridgeStack;
 
-namespace BridgeStack.DataContracts
+namespace BridgeStack
 {
 	/// <summary>
 	/// Indicates the different sources that can be offered by <see cref="IApiResponse"/> implementations.

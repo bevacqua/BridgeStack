@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Converters;
 
-namespace BridgeStack.DataContracts.Json
+namespace BridgeStack
 {
 	/// <summary>
 	/// Represents a suggested edit on a Stack Exchange site.

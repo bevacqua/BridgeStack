@@ -1,6 +1,6 @@
 using System.Runtime.Serialization;
 
-namespace BridgeStack.DataContracts.Json
+namespace BridgeStack
 {
 	/// <summary>
 	/// Badge types enumeration.

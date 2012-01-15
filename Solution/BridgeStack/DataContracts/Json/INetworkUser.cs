@@ -2,7 +2,7 @@ using System;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Converters;
 
-namespace BridgeStack.DataContracts.Json
+namespace BridgeStack
 {
 	/// <summary>
 	/// Represents a user, however it is greatly reduced when compared to the full User type to reduce

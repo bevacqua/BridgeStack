@@ -1,7 +1,7 @@
 using System;
-using BridgeStack.DataContracts.Json;
+using BridgeStack;
 
-namespace BridgeStack.Entity.Json
+namespace BridgeStack
 {
 	/// <summary>
 	/// Represents a mapping from one tag to another, as part of a system's tag synonym list.

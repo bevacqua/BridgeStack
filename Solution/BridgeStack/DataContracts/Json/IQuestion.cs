@@ -2,7 +2,7 @@ using System;
 using System.Collections.Generic;
 using Newtonsoft.Json;
 
-namespace BridgeStack.DataContracts.Json
+namespace BridgeStack
 {
 	/// <summary>
 	/// Represents a question on one of the Stack Exchange sites.

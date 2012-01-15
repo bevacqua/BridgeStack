@@ -1,7 +1,7 @@
 using System;
-using BridgeStack.DataContracts.Json;
+using BridgeStack;
 
-namespace BridgeStack.Entity.Json
+namespace BridgeStack
 {
 	/// <summary>
 	/// All Questions and Answers on a Stack Exchange site can be commented on, and this type represents those comments.

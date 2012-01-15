@@ -1,6 +1,6 @@
-using BridgeStack.DataContracts.Json;
+using BridgeStack;
 
-namespace BridgeStack.Entity.Json
+namespace BridgeStack
 {
 	/// <summary>
 	/// Represents a site that is related in some way to another site.

@@ -1,7 +1,7 @@
 using System.Collections.Generic;
 using Newtonsoft.Json;
 
-namespace BridgeStack.DataContracts.Json
+namespace BridgeStack
 {
 	/// <summary>
 	/// Strongly typed interface for the API response common "wrapper" object.

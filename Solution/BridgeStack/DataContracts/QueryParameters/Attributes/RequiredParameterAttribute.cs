@@ -1,6 +1,6 @@
 using System;
 
-namespace BridgeStack.DataContracts
+namespace BridgeStack
 {
 	/// <summary>
 	/// Indicates that this property must be set, otherwise the API will raise an exception.

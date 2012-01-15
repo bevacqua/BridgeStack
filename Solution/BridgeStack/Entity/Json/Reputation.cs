@@ -1,7 +1,7 @@
 using System;
-using BridgeStack.DataContracts.Json;
+using BridgeStack;
 
-namespace BridgeStack.Entity.Json
+namespace BridgeStack
 {
 	/// <summary>
 	/// Represents a change in reputation for a User.

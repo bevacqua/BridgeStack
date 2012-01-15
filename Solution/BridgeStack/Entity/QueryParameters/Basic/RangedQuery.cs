@@ -1,7 +1,7 @@
 using System;
-using BridgeStack.DataContracts;
+using BridgeStack;
 
-namespace BridgeStack.Entity
+namespace BridgeStack
 {
 	/// <summary>
 	/// A simple query that can be constrained to a window in time.

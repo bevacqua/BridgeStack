@@ -1,4 +1,4 @@
-namespace BridgeStack.DataContracts
+namespace BridgeStack
 {
 	/// <summary>
 	/// A request vector is tasked with parsing lists of elements when building an endpoint.

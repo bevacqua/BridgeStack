@@ -1,4 +1,4 @@
-namespace BridgeStack.DataContracts
+namespace BridgeStack
 {
 	/// <summary>
 	/// These queries require a target network site.

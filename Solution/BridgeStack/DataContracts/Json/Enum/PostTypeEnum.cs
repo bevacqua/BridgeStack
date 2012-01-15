@@ -1,6 +1,6 @@
 using System.Runtime.Serialization;
 
-namespace BridgeStack.DataContracts.Json
+namespace BridgeStack
 {
 	/// <summary>
 	/// Defines the type of a post.

@@ -1,6 +1,6 @@
 using Newtonsoft.Json;
 
-namespace BridgeStack.DataContracts
+namespace BridgeStack
 {
 	/// <summary>
 	/// Exception information coming from the Stack Exchange API.

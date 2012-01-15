@@ -1,6 +1,6 @@
 using Newtonsoft.Json;
 
-namespace BridgeStack.DataContracts.Json
+namespace BridgeStack
 {
 	/// <summary>
 	/// Describes a user's score and activity in a given Tag.

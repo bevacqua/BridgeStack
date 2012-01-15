@@ -1,5 +1,5 @@
 ﻿using System;
-using BridgeStack.DataContracts;
+using BridgeStack;
 
 namespace BridgeStack
 {

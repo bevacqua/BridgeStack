@@ -1,7 +1,7 @@
 using System.Collections.Generic;
-using BridgeStack.DataContracts;
+using BridgeStack;
 
-namespace BridgeStack.Entity
+namespace BridgeStack
 {
 	/// <summary>
 	/// The search query parameters.

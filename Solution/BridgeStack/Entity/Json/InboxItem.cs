@@ -1,7 +1,7 @@
 using System;
-using BridgeStack.DataContracts.Json;
+using BridgeStack;
 
-namespace BridgeStack.Entity.Json
+namespace BridgeStack
 {
 	/// <summary>
 	/// Represents an item in a user's Global Inbox.

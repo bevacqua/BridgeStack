@@ -1,6 +1,6 @@
 using Newtonsoft.Json;
 
-namespace BridgeStack.DataContracts.Json
+namespace BridgeStack
 {
 	/// <summary>
 	/// Represents the total Badges, segregated by rank, a user has earned.

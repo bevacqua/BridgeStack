@@ -1,6 +1,6 @@
-using BridgeStack.DataContracts.Json;
+using BridgeStack;
 
-namespace BridgeStack.Entity.Json
+namespace BridgeStack
 {
 	/// <summary>
 	/// Represents the total Badges, segregated by rank, a user has earned.

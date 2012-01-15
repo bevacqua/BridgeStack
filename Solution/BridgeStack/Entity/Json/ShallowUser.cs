@@ -1,6 +1,6 @@
-using BridgeStack.DataContracts.Json;
+using BridgeStack;
 
-namespace BridgeStack.Entity.Json
+namespace BridgeStack
 {
 	/// <summary>
 	/// Represents a user, but omits many of the fields found on the full <see cref="IUser"/> type.

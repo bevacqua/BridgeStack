@@ -1,6 +1,6 @@
 using System;
 
-namespace BridgeStack.DataContracts
+namespace BridgeStack
 {
 	/// <summary>
 	/// Common "wrapper" object for BridgeStack exceptions.

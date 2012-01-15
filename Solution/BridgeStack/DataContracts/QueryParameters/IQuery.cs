@@ -1,4 +1,4 @@
-namespace BridgeStack.DataContracts
+namespace BridgeStack
 {
 	/// <summary>
 	/// Query string parameters inherit from here.

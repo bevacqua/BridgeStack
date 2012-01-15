@@ -1,9 +1,6 @@
 ﻿using System;
 using System.Net;
-using BridgeStack.DataContracts;
-using BridgeStack.DataContracts.Json;
-using BridgeStack.Entity;
-using BridgeStack.Entity.Json;
+using BridgeStack;
 using BridgeStack.Resources;
 
 namespace BridgeStack

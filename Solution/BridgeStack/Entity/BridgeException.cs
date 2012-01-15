@@ -1,8 +1,7 @@
 using System;
 using System.Diagnostics;
-using BridgeStack.DataContracts;
 
-namespace BridgeStack.Entity
+namespace BridgeStack
 {
 	/// <summary>
 	/// Wraps an exception thrown by the bridge.

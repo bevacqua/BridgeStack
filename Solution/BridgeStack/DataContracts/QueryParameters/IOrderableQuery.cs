@@ -1,4 +1,4 @@
-namespace BridgeStack.DataContracts
+namespace BridgeStack
 {
 	/// <summary>
 	/// Allows the query to be ordered in a particular direction.

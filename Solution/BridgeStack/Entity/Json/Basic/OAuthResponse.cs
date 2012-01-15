@@ -1,9 +1,8 @@
 using System;
 using System.Diagnostics;
-using BridgeStack.DataContracts;
-using BridgeStack.DataContracts.Json;
+using BridgeStack;
 
-namespace BridgeStack.Entity.Json
+namespace BridgeStack
 {
 	/// <summary>
 	/// The concrete OAuthResponse implementation.

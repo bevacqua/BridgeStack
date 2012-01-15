@@ -1,6 +1,6 @@
-using BridgeStack.DataContracts;
+using BridgeStack;
 
-namespace BridgeStack.Entity
+namespace BridgeStack
 {
 	/// <summary>
 	/// Exception information coming from the Stack Exchange API.

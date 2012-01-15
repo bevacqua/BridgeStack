@@ -1,4 +1,4 @@
-using BridgeStack.DataContracts.Json;
+using BridgeStack;
 
 namespace BridgeStack
 {

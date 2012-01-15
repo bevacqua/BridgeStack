@@ -1,4 +1,4 @@
-namespace BridgeStack.DataContracts
+namespace BridgeStack
 {
 	/// <summary>
 	/// These queries allow selecting a sort criteria and filter according to ranges.

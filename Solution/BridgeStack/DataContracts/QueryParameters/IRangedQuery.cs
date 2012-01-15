@@ -1,6 +1,6 @@
 using System;
 
-namespace BridgeStack.DataContracts
+namespace BridgeStack
 {
 	/// <summary>
 	/// These queries allow to select a date range.

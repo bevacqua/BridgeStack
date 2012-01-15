@@ -1,6 +1,6 @@
 using System.Runtime.Serialization;
 
-namespace BridgeStack.DataContracts.Json
+namespace BridgeStack
 {
 	/// <summary>
 	/// Enumeration of different vote types and sources.

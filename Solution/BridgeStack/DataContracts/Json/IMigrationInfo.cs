@@ -1,7 +1,7 @@
 using System;
 using Newtonsoft.Json;
 
-namespace BridgeStack.DataContracts.Json
+namespace BridgeStack
 {
 	/// <summary>
 	/// Represents a question's migration to or from a different site in the Stack Exchange network.

@@ -1,6 +1,6 @@
 using System;
 
-namespace BridgeStack.DataContracts
+namespace BridgeStack
 {
 	/// <summary>
 	/// Defines the Type that Min and Max parameters are constrained to.

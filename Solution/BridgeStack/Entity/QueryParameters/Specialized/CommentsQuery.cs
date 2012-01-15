@@ -1,6 +1,6 @@
-using BridgeStack.DataContracts;
+using BridgeStack;
 
-namespace BridgeStack.Entity
+namespace BridgeStack
 {
 	/// <summary>
 	/// The post comments query parameters.

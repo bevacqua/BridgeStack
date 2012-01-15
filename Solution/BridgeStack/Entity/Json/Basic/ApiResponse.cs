@@ -1,8 +1,7 @@
 using System.Collections.Generic;
-using BridgeStack.DataContracts;
-using BridgeStack.DataContracts.Json;
+using BridgeStack;
 
-namespace BridgeStack.Entity.Json
+namespace BridgeStack
 {
 	/// <summary>
 	/// Strongly typed interface for the API response common "wrapper" object.

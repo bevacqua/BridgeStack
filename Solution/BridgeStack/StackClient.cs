@@ -1,7 +1,5 @@
 ﻿using System;
-using BridgeStack.DataContracts;
-using BridgeStack.Entity;
-using BridgeStack.Entity.Json;
+using BridgeStack;
 
 namespace BridgeStack
 {

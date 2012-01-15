@@ -1,4 +1,4 @@
-namespace BridgeStack.Entity
+namespace BridgeStack
 {
 	/// <summary>
 	/// No query string parameters.

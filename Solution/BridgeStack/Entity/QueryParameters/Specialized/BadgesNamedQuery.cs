@@ -1,4 +1,4 @@
-namespace BridgeStack.Entity
+namespace BridgeStack
 {
 	/// <summary>
 	/// The named badge query parameters.

@@ -1,7 +1,7 @@
 using System;
 using System.Collections.Generic;
 
-namespace BridgeStack.DataContracts
+namespace BridgeStack
 {
 	/// <summary>
 	/// Determines the sort values this property is allowed to take.

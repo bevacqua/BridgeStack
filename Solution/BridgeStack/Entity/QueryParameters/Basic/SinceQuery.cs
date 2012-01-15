@@ -1,6 +1,6 @@
 using System;
 
-namespace BridgeStack.Entity
+namespace BridgeStack
 {
 	/// <summary>
 	/// The since query parameters class.

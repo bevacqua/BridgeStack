@@ -1,4 +1,4 @@
-﻿namespace BridgeStack.DataContracts
+﻿namespace BridgeStack
 {
 	/// <summary>
 	/// Default filters provided by the StackExchange API.

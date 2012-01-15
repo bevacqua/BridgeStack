@@ -1,9 +1,9 @@
 using System.Collections.Generic;
-using BridgeStack.DataContracts.Json;
+using BridgeStack;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Converters;
 
-namespace BridgeStack.Entity.Json
+namespace BridgeStack
 {
 	/// <summary>
 	/// Describes a filter on the Stack Exchange API.

@@ -1,6 +1,6 @@
 using Newtonsoft.Json;
 
-namespace BridgeStack.DataContracts.Json
+namespace BridgeStack
 {
 	/// <summary>
 	/// HTTP Response common "wrapper" object.

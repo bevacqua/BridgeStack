@@ -3,10 +3,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Net;
 using System.Text;
-using BridgeStack.DataContracts;
-using BridgeStack.DataContracts.Json;
-using BridgeStack.Entity;
-using BridgeStack.Entity.Json;
+using BridgeStack;
 using BridgeStack.Resources;
 
 namespace BridgeStack

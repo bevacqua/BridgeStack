@@ -1,6 +1,6 @@
 using Newtonsoft.Json;
 
-namespace BridgeStack.DataContracts.Json
+namespace BridgeStack
 {
 	/// <summary>
 	/// Represents a privilege a user may have on a Stack Exchange site.

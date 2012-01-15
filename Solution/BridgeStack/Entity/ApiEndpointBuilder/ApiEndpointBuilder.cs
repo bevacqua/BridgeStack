@@ -1,9 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
-using BridgeStack.DataContracts;
+using BridgeStack;
 using BridgeStack.Resources;
 
-namespace BridgeStack.Entity
+namespace BridgeStack
 {
 	/// <summary>
 	/// Tasked with building endpoint URI strings to the different methods exposed by the API.

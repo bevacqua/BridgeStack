@@ -1,7 +1,7 @@
 using System;
 using Newtonsoft.Json;
 
-namespace BridgeStack.DataContracts.Json
+namespace BridgeStack
 {
 	/// <summary>
 	/// Wrapper interface for OAuth responses.

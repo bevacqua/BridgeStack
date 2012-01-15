@@ -1,8 +1,8 @@
 using System;
 using System.Collections.Generic;
-using BridgeStack.DataContracts.Json;
+using BridgeStack;
 
-namespace BridgeStack.Entity.Json
+namespace BridgeStack
 {
 	/// <summary>
 	/// Represents a question on one of the Stack Exchange sites.

@@ -1,6 +1,6 @@
 using System.Collections.Generic;
 
-namespace BridgeStack.DataContracts
+namespace BridgeStack
 {
 	/// <summary>
 	/// Tasked with building endpoint URI strings to the different methods exposed by the API.

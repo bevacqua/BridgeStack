@@ -1,9 +1,9 @@
 using System.Collections.Generic;
 using System.Linq;
 using BridgeStack.Resources;
-using BridgeStack.DataContracts;
+using BridgeStack;
 
-namespace BridgeStack.Entity
+namespace BridgeStack
 {
 	/// <summary>
 	/// A request vector is tasked with parsing lists of elements when building an endpoint.

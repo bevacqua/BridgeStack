@@ -1,4 +1,4 @@
-﻿namespace BridgeStack.DataContracts
+﻿namespace BridgeStack
 {
 	/// <summary>
 	/// A dynamically generated list of constants for network site's "api_site_parameter" values.

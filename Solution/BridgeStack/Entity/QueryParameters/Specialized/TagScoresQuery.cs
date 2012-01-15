@@ -1,6 +1,6 @@
-using BridgeStack.Entity.Json;
+using BridgeStack;
 
-namespace BridgeStack.Entity
+namespace BridgeStack
 {
 	/// <summary>
 	/// The tag scores query parameters.

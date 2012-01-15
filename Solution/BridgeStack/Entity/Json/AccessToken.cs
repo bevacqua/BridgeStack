@@ -1,8 +1,8 @@
 using System;
 using System.Collections.Generic;
-using BridgeStack.DataContracts.Json;
+using BridgeStack;
 
-namespace BridgeStack.Entity.Json
+namespace BridgeStack
 {
 	/// <summary>
 	/// Represents an access token created as part of an OAuth flow.

@@ -1,6 +1,6 @@
 using System.Runtime.Serialization;
 
-namespace BridgeStack.Entity.Json
+namespace BridgeStack
 {
 	/// <summary>
 	/// The period on which to query.

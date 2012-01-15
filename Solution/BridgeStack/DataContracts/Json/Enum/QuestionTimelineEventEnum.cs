@@ -1,6 +1,6 @@
 using System.Runtime.Serialization;
 
-namespace BridgeStack.DataContracts.Json
+namespace BridgeStack
 {
 	/// <summary>
 	/// Defines the different question timeline events available.

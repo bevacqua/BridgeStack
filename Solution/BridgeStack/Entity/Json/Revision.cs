@@ -1,8 +1,8 @@
 using System;
 using System.Collections.Generic;
-using BridgeStack.DataContracts.Json;
+using BridgeStack;
 
-namespace BridgeStack.Entity.Json
+namespace BridgeStack
 {
 	/// <summary>
 	/// Represents the state of a Post at some point in its history.

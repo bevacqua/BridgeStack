@@ -1,8 +1,8 @@
 using System;
 using System.Runtime.Serialization;
-using BridgeStack.DataContracts.Json;
+using BridgeStack;
 
-namespace BridgeStack.DataContracts
+namespace BridgeStack
 {
 	/// <summary>
 	/// Query sort available fields.

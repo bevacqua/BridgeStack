@@ -1,6 +1,6 @@
 using System.Collections.Generic;
 
-namespace BridgeStack.Entity
+namespace BridgeStack
 {
 	/// <summary>
 	/// The query parameters for requests to create new filters.

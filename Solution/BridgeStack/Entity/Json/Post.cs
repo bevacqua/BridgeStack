@@ -1,8 +1,8 @@
 using System;
 using System.Collections.Generic;
-using BridgeStack.DataContracts.Json;
+using BridgeStack;
 
-namespace BridgeStack.Entity.Json
+namespace BridgeStack
 {
 	/// <summary>
 	/// Represents the intersection of the Question and Answer types.

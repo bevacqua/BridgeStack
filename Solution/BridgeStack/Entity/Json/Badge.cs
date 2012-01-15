@@ -1,6 +1,4 @@
-using BridgeStack.DataContracts.Json;
-
-namespace BridgeStack.Entity.Json
+namespace BridgeStack
 {
 	/// <summary>
 	/// Represents a badge on one of the Stack Exchange sites.

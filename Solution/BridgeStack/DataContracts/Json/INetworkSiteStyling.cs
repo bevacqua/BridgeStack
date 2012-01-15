@@ -1,7 +1,7 @@
 using System;
 using Newtonsoft.Json;
 
-namespace BridgeStack.DataContracts.Json
+namespace BridgeStack
 {
 	/// <summary>
 	/// Represents the stylings of a site in the Stack Exchange network.
