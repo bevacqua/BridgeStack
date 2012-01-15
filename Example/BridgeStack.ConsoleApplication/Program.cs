@@ -1,5 +1,4 @@
 ﻿using System;
-using BridgeStack;
 
 namespace BridgeStack.ConsoleApplication
 {
@@ -10,7 +9,8 @@ namespace BridgeStack.ConsoleApplication
 		private static readonly string _token = "YOUR_TEST_ACCESS_TOKEN";
 
 		private static readonly IOAuthClient oauth = new OAuthClientFactory().Create(_appId);
-		private static readonly IStackClient client = new StackClientFactory().Create(_appKey, _token);
+		private static readonly IStackClient client = new StackClientFactory().Create(_appKey);
+		private static readonly IAuthorizedStackClient authClient = new StackClientFactory().Create(_appKey, _token);
 
 		public static void Main(string[] args)
 		{
@@ -28,7 +28,11 @@ namespace BridgeStack.ConsoleApplication
 			var state = new OAuthState();
 			state.Add("example", "value");
 			state.Add("another", "string");
-			string value = oauth.GetExplicitOAuthApprovalUri(new OAuthScope { ReadInbox = true, NoExpiry = true }, state);
+			string value = oauth.GetExplicitOAuthApprovalUri(new OAuthScope
+			{
+				ReadInbox = true,
+				NoExpiry = true
+			}, state);
 			Console.WriteLine(value);
 		}
 
@@ -134,8 +138,7 @@ namespace BridgeStack.ConsoleApplication
 		private static void GetMyComments()
 		{
 			client.Default.Site = NetworkSiteEnum.StackOverflow;
-			var user = client.GetMyUser();
-			IBridgeResponseCollection<Comment> comments = client.GetMyComments();
+			IBridgeResponseCollection<Comment> comments = authClient.GetMyComments();
 
 			Console.WriteLine(comments.Safe[0].CommentId);
 		}
@@ -148,7 +151,7 @@ namespace BridgeStack.ConsoleApplication
 				Min = BadgeRankEnum.Silver,
 				Max = BadgeRankEnum.Silver
 			};
-			var badges = client.GetMyBadges(parameters);
+			var badges = authClient.GetMyBadges(parameters);
 
 			foreach (var badge in badges.Unsafe)
 			{

@@ -1,4 +1,4 @@
 bin/
 obj/
 *.user
-_ReSharper.BridgeStack/
+_ReSharper.*/
