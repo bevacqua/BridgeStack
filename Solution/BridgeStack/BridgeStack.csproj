@@ -250,6 +250,7 @@
     <EmbeddedResource Include="Resources\Shared.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Shared.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup />
