@@ -1,0 +1,264 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>8.0.30703</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{4FC2DC00-A995-4BBB-98B2-9B1D4CED8C92}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>BridgeStack</RootNamespace>
+    <AssemblyName>BridgeStack</AssemblyName>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Newtonsoft.Json, Version=4.0.5.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\lib\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="ApiResponseCache.cs" />
+    <Compile Include="ApiResponseStore.cs" />
+    <Compile Include="BridgeResponseCollection.cs" />
+    <Compile Include="ApiWebClient.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="DataContracts\Json\Enum\FilterTypeEnum.cs" />
+    <Compile Include="DataContracts\Json\Enum\SiteTypeEnum.cs" />
+    <Compile Include="DataContracts\Json\INetworkSiteStyling.cs" />
+    <Compile Include="DataContracts\QueryParameters\Attributes\RequiredParameterOrAttribute.cs" />
+    <Compile Include="DataContracts\QueryParameters\IRangedQuery.cs" />
+    <Compile Include="DataContracts\QueryParameters\QueryParam.cs" />
+    <Compile Include="DataContracts\Json\IFilter.cs" />
+    <Compile Include="Entity\Json\NetworkSiteStyling.cs" />
+    <Compile Include="Entity\QueryParameters\Basic\Query.cs" />
+    <Compile Include="Entity\QueryParameters\Specialized\BadgesNamedQuery.cs" />
+    <Compile Include="Entity\QueryParameters\Specialized\CommentsQuery.cs" />
+    <Compile Include="Entity\QueryParameters\Basic\ComplexQuery.cs" />
+    <Compile Include="Entity\QueryParameters\Basic\RangedQuery.cs" />
+    <Compile Include="Entity\QueryParameters\Basic\SimpleQuery.cs" />
+    <Compile Include="Entity\QueryParameters\Specialized\BadgesUserQuery.cs" />
+    <Compile Include="Entity\QueryParameters\Specialized\TagScoresQuery.cs" />
+    <Compile Include="Entity\QueryParameters\Specialized\TagSynonymsQuery.cs" />
+    <Compile Include="Entity\QueryParameters\Specialized\TagsNamedQuery.cs" />
+    <Compile Include="Entity\QueryParameters\Basic\SinceQuery.cs" />
+    <Compile Include="Entity\QueryParameters\Specialized\TagsQuery.cs" />
+    <Compile Include="Entity\QueryParameters\Specialized\QuestionFavoritesQuery.cs" />
+    <Compile Include="Entity\QueryParameters\Specialized\UsersNamedQuery.cs" />
+    <Compile Include="Entity\QueryParameters\Specialized\UsersQuery.cs" />
+    <Compile Include="Entity\QueryParameters\Specialized\QuestionsRelatedQuery.cs" />
+    <Compile Include="Extensions\IQuery.cs" />
+    <Compile Include="Extensions\String.cs" />
+    <Compile Include="Extensions\Attribute.cs" />
+    <Compile Include="Extensions\Json.cs" />
+    <Compile Include="Extensions\UnixDateTime.cs" />
+    <Compile Include="Helpers\UnixTimeSpanConverter.cs" />
+    <Compile Include="Extensions\UnixTimeSpan.cs" />
+    <Compile Include="Interface\IBridgeResponseData.cs" />
+    <Compile Include="Interface\IOAuthScope.cs" />
+    <Compile Include="Interface\IOAuthState.cs" />
+    <Compile Include="Interface\IStackClientDefaults.cs" />
+    <Compile Include="OAuthState.cs" />
+    <Compile Include="StackClientDefaults.cs" />
+    <Compile Include="OAuthScope.cs" />
+    <Compile Include="Resources\EndpointBuilder.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>EndpointBuilder.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Resources\Error.Designer.cs">
+      <DependentUpon>Error.resx</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="Helpers\UnixDateTimeConverter.cs" />
+    <Compile Include="Helpers\Utility.cs" />
+    <Compile Include="DataContracts\ApiEndpointBuilder\IApiEndpointBuilder.cs" />
+    <Compile Include="DataContracts\ApiEndpointBuilder\IRequestVector.cs" />
+    <Compile Include="DataContracts\Enum\FilterEnum.cs" />
+    <Compile Include="DataContracts\Enum\NetworkSiteEnum.cs" />
+    <Compile Include="DataContracts\Enum\ResultSourceEnum.cs" />
+    <Compile Include="DataContracts\IBridgeException.cs" />
+    <Compile Include="DataContracts\IApiException.cs" />
+    <Compile Include="DataContracts\Json\ITagTop.cs" />
+    <Compile Include="DataContracts\Json\ITagSynonym.cs" />
+    <Compile Include="DataContracts\Json\ITagWiki.cs" />
+    <Compile Include="DataContracts\Json\Enum\BadgeRankEnum.cs" />
+    <Compile Include="DataContracts\Json\Enum\BadgeTypeEnum.cs" />
+    <Compile Include="DataContracts\Json\Enum\PostTypeEnum.cs" />
+    <Compile Include="DataContracts\Json\Enum\QuestionTimelineEventEnum.cs" />
+    <Compile Include="DataContracts\Json\Enum\RevisionTypeEnum.cs" />
+    <Compile Include="DataContracts\Json\Enum\SiteRelationEnum.cs" />
+    <Compile Include="DataContracts\Json\Enum\SiteStateEnum.cs" />
+    <Compile Include="DataContracts\Json\Enum\UserTimelineType.cs" />
+    <Compile Include="DataContracts\Json\Enum\UserTypeEnum.cs" />
+    <Compile Include="DataContracts\Json\Enum\VoteTypeEnum.cs" />
+    <Compile Include="DataContracts\Json\IAccessToken.cs" />
+    <Compile Include="DataContracts\Json\IAnswer.cs" />
+    <Compile Include="DataContracts\Json\Basic\IApiResponse.cs" />
+    <Compile Include="DataContracts\Json\IBadge.cs" />
+    <Compile Include="DataContracts\Json\IBadgeCount.cs" />
+    <Compile Include="DataContracts\Json\IComment.cs" />
+    <Compile Include="DataContracts\Json\IEvent.cs" />
+    <Compile Include="DataContracts\Json\Basic\IHttpResponse.cs" />
+    <Compile Include="DataContracts\Json\IInboxItem.cs" />
+    <Compile Include="DataContracts\Json\IMigrationInfo.cs" />
+    <Compile Include="DataContracts\Json\INetworkSite.cs" />
+    <Compile Include="DataContracts\Json\INetworkSiteRelation.cs" />
+    <Compile Include="DataContracts\Json\INetworkSiteStats.cs" />
+    <Compile Include="DataContracts\Json\INetworkUser.cs" />
+    <Compile Include="DataContracts\Json\Basic\IOAuthResponse.cs" />
+    <Compile Include="DataContracts\Json\IPost.cs" />
+    <Compile Include="DataContracts\Json\IPrivilege.cs" />
+    <Compile Include="DataContracts\Json\IQuestion.cs" />
+    <Compile Include="DataContracts\Json\IQuestionTimeline.cs" />
+    <Compile Include="DataContracts\Json\IReputation.cs" />
+    <Compile Include="DataContracts\Json\IRevision.cs" />
+    <Compile Include="DataContracts\Json\IShallowPost.cs" />
+    <Compile Include="DataContracts\Json\IShallowUser.cs" />
+    <Compile Include="DataContracts\Json\ISuggestedEdit.cs" />
+    <Compile Include="DataContracts\Json\ITag.cs" />
+    <Compile Include="DataContracts\Json\ITagScore.cs" />
+    <Compile Include="DataContracts\Json\IUser.cs" />
+    <Compile Include="DataContracts\Json\IUserTimeline.cs" />
+    <Compile Include="DataContracts\QueryParameters\Attributes\RangeTypeConstraintAttribute.cs" />
+    <Compile Include="DataContracts\QueryParameters\Attributes\AllowedSortValuesAttribute.cs" />
+    <Compile Include="DataContracts\QueryParameters\Attributes\RequiredParameterAttribute.cs" />
+    <Compile Include="DataContracts\QueryParameters\Enum\QueryOrderEnum.cs" />
+    <Compile Include="DataContracts\QueryParameters\Enum\QueryPeriodEnum.cs" />
+    <Compile Include="DataContracts\QueryParameters\Enum\QuerySortEnum.cs" />
+    <Compile Include="DataContracts\QueryParameters\IFilteredQuery.cs" />
+    <Compile Include="DataContracts\QueryParameters\IOrderableQuery.cs" />
+    <Compile Include="DataContracts\QueryParameters\IPagedQuery.cs" />
+    <Compile Include="DataContracts\QueryParameters\IQuery.cs" />
+    <Compile Include="DataContracts\QueryParameters\ISiteQuery.cs" />
+    <Compile Include="DataContracts\QueryParameters\ISortableQuery.cs" />
+    <Compile Include="Entity\ApiEndpointBuilder\ApiEndpointBuilder.cs" />
+    <Compile Include="Entity\ApiEndpointBuilder\RequestVector.cs" />
+    <Compile Include="Entity\BridgeException.cs" />
+    <Compile Include="Extensions\QueryParam.cs" />
+    <Compile Include="Entity\Json\AccessToken.cs" />
+    <Compile Include="Entity\Json\Answer.cs" />
+    <Compile Include="Entity\ApiException.cs" />
+    <Compile Include="Entity\Json\Basic\ApiResponse.cs" />
+    <Compile Include="Entity\Json\Badge.cs" />
+    <Compile Include="Entity\Json\BadgeCount.cs" />
+    <Compile Include="Entity\Json\Comment.cs" />
+    <Compile Include="Entity\Json\Event.cs" />
+    <Compile Include="DataContracts\Json\Enum\EventTypeEnum.cs" />
+    <Compile Include="Entity\Json\Filter.cs" />
+    <Compile Include="Entity\Json\InboxItem.cs" />
+    <Compile Include="Entity\Json\MigrationInfo.cs" />
+    <Compile Include="Entity\Json\NetworkSite.cs" />
+    <Compile Include="Entity\Json\NetworkSiteRelation.cs" />
+    <Compile Include="Entity\Json\NetworkSiteStats.cs" />
+    <Compile Include="Entity\Json\NetworkUser.cs" />
+    <Compile Include="Entity\Json\Basic\OAuthResponse.cs" />
+    <Compile Include="Entity\Json\Post.cs" />
+    <Compile Include="Entity\Json\Privilege.cs" />
+    <Compile Include="Entity\Json\Question.cs" />
+    <Compile Include="Entity\Json\QuestionTimeline.cs" />
+    <Compile Include="Entity\Json\Reputation.cs" />
+    <Compile Include="Entity\Json\Revision.cs" />
+    <Compile Include="Entity\Json\ShallowUser.cs" />
+    <Compile Include="Entity\Json\SuggestedEdit.cs" />
+    <Compile Include="Entity\Json\Tag.cs" />
+    <Compile Include="Entity\Json\TagScore.cs" />
+    <Compile Include="Entity\Json\TagSynonym.cs" />
+    <Compile Include="Entity\Json\TagWiki.cs" />
+    <Compile Include="Entity\Json\TagTop.cs" />
+    <Compile Include="Entity\Json\User.cs" />
+    <Compile Include="Entity\Json\UserTimeline.cs" />
+    <Compile Include="Entity\QueryParameters\Specialized\PostsQuery.cs" />
+    <Compile Include="Entity\QueryParameters\Specialized\BadgesQuery.cs" />
+    <Compile Include="Entity\QueryParameters\Specialized\CreateFilterQuery.cs" />
+    <Compile Include="Entity\QueryParameters\Basic\NullQuery.cs" />
+    <Compile Include="Entity\QueryParameters\Specialized\QuestionsQuery.cs" />
+    <Compile Include="Entity\QueryParameters\Specialized\SearchQuery.cs" />
+    <Compile Include="Entity\QueryParameters\Specialized\SearchSimilarQuery.cs" />
+    <Compile Include="Entity\QueryParameters\Basic\SiteQuery.cs" />
+    <Compile Include="Entity\QueryParameters\Specialized\SuggestedEditsQuery.cs" />
+    <Compile Include="OAuthClientFactory.cs" />
+    <Compile Include="Interface\IOAuthClient.cs" />
+    <Compile Include="OAuthClient.cs" />
+    <Compile Include="Interface\IApiResponseStore.cs" />
+    <Compile Include="Interface\IApiResponseCache.cs" />
+    <Compile Include="Interface\IBridgeResponse.cs" />
+    <Compile Include="Interface\IBridgeResponseCollection.cs" />
+    <Compile Include="Interface\IBridgeResponseItem.cs" />
+    <Compile Include="Interface\IRequestHandler.cs" />
+    <Compile Include="RequestHandler.cs" />
+    <Compile Include="Resources\OAuth.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>OAuth.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Resources\Shared.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Shared.resx</DependentUpon>
+    </Compile>
+    <Compile Include="StackClient.cs" />
+    <Compile Include="Interface\IStackClient.cs" />
+    <Compile Include="StackClientBase.cs" />
+    <Compile Include="StackClientFactory.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="BridgeResponseItem.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Resources\EndpointBuilder.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>EndpointBuilder.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Resources\Error.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Error.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Resources\OAuth.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>OAuth.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Resources\Shared.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Shared.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup />
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>
