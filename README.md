@@ -62,3 +62,9 @@ About
 
 I created this library as a way to give back to the [StackOverflow][3] community, which has helped me out and taught me on countless ocassions.  
 At all times I attempted to mantain the same philosophy in writting this library. I documented every method, reused as much code as possibly, mirrored the API as heavily as possible, and generally designed it with wrapping away complexity in mind.
+
+
+  [2]: http://stackexchange.com
+  [3]: http://stackoverflow.com
+  [4]: http://stackoverflow.com
+  [5]: http://stackexchange.com
