@@ -21,14 +21,7 @@ namespace BridgeStack
 		{
 			get { return ApiResponse != null; }
 		}
-
-		/// <summary>
-		/// Disallow parameterless construction.
-		/// </summary>
-		private BridgeException()
-		{
-		}
-
+		
 		/// <summary>
 		/// Wraps an exception thrown by the bridge.
 		/// </summary>

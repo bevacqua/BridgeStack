@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Net;
-using BridgeStack;
 using BridgeStack.Resources;
 
 namespace BridgeStack
@@ -13,7 +12,7 @@ namespace BridgeStack
 		/// <summary>
 		/// Internal response cache store for the API.
 		/// </summary>
-		private IApiResponseStore _store;
+		private readonly IApiResponseStore _store;
 
 		/// <summary>
 		/// Instances the request handler.

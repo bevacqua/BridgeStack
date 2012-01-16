@@ -60,22 +60,23 @@ namespace BridgeStack
 			sb.Append("{");
 			foreach (string[] pair in parameters.Select(param => param.Split('=')))
 			{
-				if (pair.Length == 2)
+				if (pair.Length != 2)
 				{
-					sb.Append(separator);
-					string name = pair[0];
-					string value = pair[1];
-					long test;
-					if (long.TryParse(value, out test))
-					{
-						sb.AppendFormat(EndpointBuilder.JsonKeyValuePairNumeric, name, value);
-					}
-					else
-					{
-						sb.AppendFormat(EndpointBuilder.JsonKeyValuePair, name, value);
-					}
-					separator = ", ";
+					continue;
 				}
+				sb.Append(separator);
+				string name = pair[0];
+				string value = pair[1];
+				long test;
+				if (long.TryParse(value, out test))
+				{
+					sb.AppendFormat(EndpointBuilder.JsonKeyValuePairNumeric, name, value);
+				}
+				else
+				{
+					sb.AppendFormat(EndpointBuilder.JsonKeyValuePair, name, value);
+				}
+				separator = ", ";
 			}
 			sb.Append("}");
 			return sb.ToString();

@@ -18,19 +18,25 @@ namespace BridgeStack
 		/// <summary>
 		/// The object that builds the API route endpoint.
 		/// </summary>
-		public IApiEndpointBuilder EndpointBuilder { get; private set; }
+		public IApiEndpointBuilder EndpointBuilder
+		{
+			get { return Component.EndpointBuilder; }
+		}
 
 		/// <summary>
 		/// The API response common "wrapper" object, as is.
 		/// </summary>
-		public IApiResponse<T> Response { get; private set; }
+		public IApiResponse<T> Response
+		{
+			get { return Component.Response; }
+		}
 
 		/// <summary>
 		/// The exception that was raised during the API call, if any. This can either be an internal error or come from the API response.
 		/// </summary>
 		public IBridgeException Exception
 		{
-			get { return Response.Exception; }
+			get { return Component.Exception; }
 		}
 
 		/// <summary>
