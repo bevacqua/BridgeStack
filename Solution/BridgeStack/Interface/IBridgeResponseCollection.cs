@@ -6,7 +6,7 @@ namespace BridgeStack
 	/// Wraps a collection of elements returned by a request to the API.
 	/// </summary>
 	/// <typeparam name="T">The strong type for the <see cref="IBridgeResponse"/> object.</typeparam>
-	public interface IBridgeResponseCollection<T> : IBridgeResponse<T>, IBridgeResponseData<IList<T>>  where T : class
+	public interface IBridgeResponseCollection<T> : IBridgeResponse<T>, IBridgeResponseData<IEnumerable<T>>, IEnumerable<T>  where T : class
 	{
 		/// <summary>
 		/// Boolean value indicating whether there are more pages available.

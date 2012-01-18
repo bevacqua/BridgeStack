@@ -30,6 +30,6 @@ namespace BridgeStack
 		/// <summary>
 		/// True if the API call was successful. False otherwise.
 		/// </summary>
-		bool HasResult { get; }
+		bool IsEmpty { get; }
 	}
 }

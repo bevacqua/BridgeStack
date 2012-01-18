@@ -69,7 +69,7 @@ namespace BridgeStack
 		/// <summary>
 		/// True if the API call was successful. False otherwise.
 		/// </summary>
-		public bool HasResult
+		public bool IsEmpty
 		{
 			get { return Safe != null; }
 		}

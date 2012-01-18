@@ -1,6 +1,7 @@
 using System;
+using System.Collections;
 using System.Collections.Generic;
-using BridgeStack;
+using System.Linq;
 
 namespace BridgeStack
 {
@@ -36,15 +37,15 @@ namespace BridgeStack
 		/// <summary>
 		/// A list of elements of type <typeparamref name="T"/>, that's returned from the API.
 		/// </summary>
-		public IList<T> Safe
+		public IEnumerable<T> Safe
 		{
-			get { return Response.Items; }
+			get { return Response.Items ?? Enumerable.Empty<T>(); }
 		}
 
 		/// <summary>
 		/// Returns the result directly, but raises an exception if the query resulted in an error.
 		/// </summary>
-		public IList<T> Unsafe
+		public IEnumerable<T> Unsafe
 		{
 			get
 			{
@@ -56,16 +57,16 @@ namespace BridgeStack
 					}
 					throw Response.Exception.InnerException;
 				}
-				return Response.Items;
+				return Safe;
 			}
 		}
 
 		/// <summary>
 		/// True if the API call was successful. False otherwise.
 		/// </summary>
-		public bool HasResult
+		public bool IsEmpty
 		{
-			get { return Safe != null; }
+			get { return !Safe.Any(); }
 		}
 
 		/// <summary>
@@ -126,6 +127,30 @@ namespace BridgeStack
 			_requestHandler = requestHandler;
 			EndpointBuilder = builder;
 			Response = response;
+		}
+
+		/// <summary>
+		/// Returns an enumerator that iterates through the collection.
+		/// </summary>
+		/// <returns>
+		/// A <see cref="T:System.Collections.Generic.IEnumerator`1"/> that can be used to iterate through the collection.
+		/// </returns>
+		/// <filterpriority>1</filterpriority>
+		public IEnumerator<T> GetEnumerator()
+		{
+			return Safe.GetEnumerator();
+		}
+
+		/// <summary>
+		/// Returns an enumerator that iterates through a collection.
+		/// </summary>
+		/// <returns>
+		/// An <see cref="T:System.Collections.IEnumerator"/> object that can be used to iterate through the collection.
+		/// </returns>
+		/// <filterpriority>2</filterpriority>
+		IEnumerator IEnumerable.GetEnumerator()
+		{
+			return GetEnumerator();
 		}
 	}
 }
