@@ -22,7 +22,7 @@ var parameters = new BadgesOnUserQuery
 };
 var badges = client.GetMyBadges(parameters);
 
-foreach (var badge in badges.Unsafe)
+foreach (var badge in badges)
 {
     Console.WriteLine(badge.Name);
 }
@@ -57,12 +57,12 @@ var badges = client.GetMyBadges(parameters);
 The API is accessed, and the user badges are received from [StackExchange][5].
 
 ```c#
-foreach (var badge in badges.Unsafe)
+foreach (var badge in badges)
 {
 	Console.WriteLine(badge.Name);
 }
 ```
-The badges are then iterated, and their names are output to the console. Note that `Unsafe` only means that if a problem arises, `Unsafe` *can throw* an `Exception`. If we were using `Safe`, it would just have been `null`. This has to do with coding style, mostly.
+The badges are then iterated, and their names are output to the console. Note that `badges`, while an `IEnumerable<T>`, contains valuable data other than the actual list items, like paging info, the actual response, exceptions that might have been thrown (and be the reason the enumeration is empty), etc.
 
 
 About
@@ -72,6 +72,7 @@ About
 I created this library as a way to give back to the [StackOverflow][3] community, which has helped me out and taught me on countless ocassions.  
 At all times I attempted to mantain the same philosophy in writting this library. I documented every method, reused as much code as possibly, mirrored the API as heavily as possible, and generally designed it with wrapping away complexity in mind.
 
+BridgeStack is licensed under GNU/GPL.
 
   [2]: http://stackexchange.com
   [3]: http://stackoverflow.com
