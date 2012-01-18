@@ -27,7 +27,7 @@ namespace BridgeStack
 		public IApiResponse<T> Response { get; private set; }
 
 		/// <summary>
-		/// The exception that was raised during the API call, if any. This can either be an internal error or come from the API response.
+		/// The exception that was raised during the API call, if any. This can either be an error raised by the bridge or come from the API response.
 		/// </summary>
 		public IBridgeException Exception
 		{
@@ -62,7 +62,7 @@ namespace BridgeStack
 		}
 
 		/// <summary>
-		/// True if the API call was successful. False otherwise.
+		/// True if the API call yielded no result items. This could be due to an error.
 		/// </summary>
 		public bool IsEmpty
 		{

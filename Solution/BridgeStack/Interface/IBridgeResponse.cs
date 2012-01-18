@@ -28,7 +28,7 @@ namespace BridgeStack
 		/// </summary>
 		IBridgeException Exception { get; }
 		/// <summary>
-		/// True if the API call was successful. False otherwise.
+		/// True if the API call yielded no result items. This could be due to an error.
 		/// </summary>
 		bool IsEmpty { get; }
 	}

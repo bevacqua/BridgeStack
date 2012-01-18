@@ -13,7 +13,7 @@ namespace BridgeStack
 		/// <summary>
 		/// The base Bridge response object.
 		/// </summary>
-		private IBridgeResponse<T> Component { get; set; }
+		private IBridgeResponseCollection<T> Component { get; set; }
 
 		/// <summary>
 		/// The object that builds the API route endpoint.
@@ -44,7 +44,7 @@ namespace BridgeStack
 		/// </summary>
 		public T Safe
 		{
-			get { return Response.Items == null ? null : Response.Items.FirstOrDefault(); }
+			get { return Component.Safe.FirstOrDefault(); }
 		}
 
 		/// <summary>
@@ -54,31 +54,23 @@ namespace BridgeStack
 		{
 			get
 			{
-				if (Response.Source == ResultSourceEnum.ApiException || Response.Source == ResultSourceEnum.BridgeException)
-				{
-					if (Response.Exception is Exception)
-					{
-						throw (Exception)Response.Exception;
-					}
-					throw Response.Exception.InnerException;
-				}
-				return Response.Items.FirstOrDefault();
+				return Component.Unsafe.FirstOrDefault();
 			}
 		}
 
 		/// <summary>
-		/// True if the API call was successful. False otherwise.
+		/// True if the API call yielded no result items. This could be due to an error.
 		/// </summary>
 		public bool IsEmpty
 		{
-			get { return Safe != null; }
+			get { return Safe == null; }
 		}
 
 		/// <summary>
 		/// Creates a Bridge response object that contains a single result item.
 		/// </summary>
 		/// <param name="component">The base Bridge response object.</param>
-		internal BridgeResponseItem(IBridgeResponse<T> component)
+		internal BridgeResponseItem(IBridgeResponseCollection<T> component)
 		{
 			Component = component;
 		}
