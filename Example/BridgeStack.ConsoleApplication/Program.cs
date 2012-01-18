@@ -154,7 +154,7 @@ namespace BridgeStack.ConsoleApplication
 			};
 			var badges = authClient.GetMyBadges(parameters);
 
-			foreach (var badge in badges.Unsafe)
+			foreach (var badge in badges)
 			{
 				Console.WriteLine(badge.Name);
 			}
