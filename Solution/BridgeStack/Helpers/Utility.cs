@@ -9,7 +9,7 @@ namespace BridgeStack
 	/// <summary>
 	/// Utility class for non-extension helper methods.
 	/// </summary>
-	public static class Utility
+	internal static class Utility
 	{
 		/// <summary>
 		/// The JSON MIME type used in content encoding for the StackExchange API protocol.

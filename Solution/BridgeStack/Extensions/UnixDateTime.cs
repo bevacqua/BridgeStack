@@ -6,7 +6,7 @@ namespace BridgeStack
 	/// <summary>
 	/// Date Time helpers to assist in JSON deserialization.
 	/// </summary>
-	public static class UnixDateTimeHelpers
+	internal static class UnixDateTimeHelpers
 	{
 		/// <summary>
 		/// Parses a long representation of an Unix Date into a DateTime.

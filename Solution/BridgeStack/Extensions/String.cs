@@ -3,7 +3,7 @@
 	/// <summary>
 	/// String extensions. Mostly syntactic sugar.
 	/// </summary>
-	public static class StringHelpers
+	internal static class StringHelpers
 	{
 		/// <summary>
 		/// Replaces the format item in a specified string with the string representations of a corresponding object in a specified array.

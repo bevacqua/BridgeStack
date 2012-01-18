@@ -8,7 +8,7 @@ namespace BridgeStack
 	/// <summary>
 	/// Helper methods designed to deserialize JSON strings into objects.
 	/// </summary>
-	public static class JsonHelpers
+	internal static class JsonHelpers
 	{
 		/// <summary>
 		/// Takes a web response's stream and returns it's contents.

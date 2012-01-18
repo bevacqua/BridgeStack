@@ -1,6 +1,4 @@
-using System;
 using System.Linq;
-using BridgeStack;
 
 namespace BridgeStack
 {
@@ -8,7 +6,7 @@ namespace BridgeStack
 	/// Wraps a single element returned by a request to the API.
 	/// </summary>
 	/// <typeparam name="T">The strong type for the <see cref="IBridgeResponse"/> object.</typeparam>
-	public sealed class BridgeResponseItem<T> : IBridgeResponseItem<T> where T : class
+	internal sealed class BridgeResponseItem<T> : IBridgeResponseItem<T> where T : class
 	{
 		/// <summary>
 		/// The base Bridge response object.

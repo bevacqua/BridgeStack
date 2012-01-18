@@ -6,7 +6,7 @@ namespace BridgeStack
 	/// <summary>
 	/// Extension methods for the IQuery interface.
 	/// </summary>
-	public static class QueryHelpers
+	internal static class QueryHelpers
 	{
 		/// <summary>
 		/// Updates query string parameters with defaults values, if not overridden.

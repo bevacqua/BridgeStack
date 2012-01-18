@@ -185,5 +185,14 @@ namespace BridgeStack.Resources {
                 return ResourceManager.GetString("TimeExpected", resourceCulture);
             }
         }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Undetermined exception raised by BridgeStack..
+        /// </summary>
+        internal static string UnspecifiedException {
+            get {
+                return ResourceManager.GetString("UnspecifiedException", resourceCulture);
+            }
+        }
     }
 }

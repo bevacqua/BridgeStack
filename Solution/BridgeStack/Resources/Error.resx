@@ -167,4 +167,7 @@
   <data name="TimeExpected" xml:space="preserve">
     <value>Time object value expected.</value>
   </data>
+  <data name="UnspecifiedException" xml:space="preserve">
+    <value>Undetermined exception raised by BridgeStack.</value>
+  </data>
 </root>

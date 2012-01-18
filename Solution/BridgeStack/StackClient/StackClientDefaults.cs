@@ -3,7 +3,7 @@ namespace BridgeStack
 	/// <summary>
 	/// Default values for queries coming from a particular client instance.
 	/// </summary>
-	public sealed class StackClientDefaults : IStackClientDefaults
+	internal sealed class StackClientDefaults : IStackClientDefaults
 	{
 		/// <summary>
 		/// Default filter for all requests.

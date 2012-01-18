@@ -5,7 +5,7 @@ namespace BridgeStack
 	/// <summary>
 	/// Time Span helpers to assist in JSON deserialization.
 	/// </summary>
-	public static class UnixTimeSpanHelpers
+	internal static class UnixTimeSpanHelpers
 	{
 		/// <summary>
 		/// Parses a long representation of an Unix TimeSpan into a TimeSpan.

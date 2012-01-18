@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
 using System.Runtime.Serialization;
-using BridgeStack;
 using BridgeStack.Resources;
 
 namespace BridgeStack
@@ -11,7 +10,7 @@ namespace BridgeStack
 	/// <summary>
 	/// Helper methods for the QueryParam class.
 	/// </summary>
-	public static class QueryParamHelpers
+	internal static class QueryParamHelpers
 	{
 		/// <summary>
 		/// Converts a IQuery concrete implementation into a query string parameter collection.

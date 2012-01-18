@@ -8,7 +8,7 @@ namespace BridgeStack
 	/// <summary>
 	/// Date Time converter specialized on Unix Date Time parsing.
 	/// </summary>
-	public class UnixDateTimeConverter : DateTimeConverterBase
+	internal class UnixDateTimeConverter : DateTimeConverterBase
 	{
 		/// <summary>
 		/// Writes the JSON representation of the object.

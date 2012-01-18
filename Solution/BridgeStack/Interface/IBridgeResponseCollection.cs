@@ -17,10 +17,5 @@ namespace BridgeStack
 		/// </summary>
 		/// <returns>A wrapper around the response to the request for a next page. In abscence of a next page, this method returns the current page from the internal cache.</returns>
 		IBridgeResponseCollection<T> More();
-		/// <summary>
-		/// Returns the first item in the response's result set. This method does not query the API.
-		/// </summary>
-		/// <returns>A wrapper around the result item.</returns>
-		IBridgeResponseItem<T> Single();
 	}
 }

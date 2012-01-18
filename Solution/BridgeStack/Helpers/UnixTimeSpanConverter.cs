@@ -7,7 +7,7 @@ namespace BridgeStack
 	/// <summary>
 	/// JSON converter specialized on Unix Time Span parsing.
 	/// </summary>
-	public class UnixTimeSpanConverter : JsonConverter
+	internal class UnixTimeSpanConverter : JsonConverter
 	{
 		/// <summary>
 		/// Writes the JSON representation of the object.

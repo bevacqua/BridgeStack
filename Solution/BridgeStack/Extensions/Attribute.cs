@@ -7,7 +7,7 @@ namespace BridgeStack
 	/// <summary>
 	/// Reflection helpers to help deal with attributes.
 	/// </summary>
-	public static class AttributeHelpers
+	internal static class AttributeHelpers
 	{
 		/// <summary>
 		/// Returns the first occurrence of a given attribute T on a property.

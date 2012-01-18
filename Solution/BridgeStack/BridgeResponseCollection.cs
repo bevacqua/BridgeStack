@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
+using BridgeStack.Resources;
 
 namespace BridgeStack
 {
@@ -9,7 +10,7 @@ namespace BridgeStack
 	/// Wraps a collection of elements returned by a request to the API.
 	/// </summary>
 	/// <typeparam name="T">The strong type for the <see cref="IBridgeResponse"/> object.</typeparam>
-	public sealed class BridgeResponseCollection<T> : IBridgeResponseCollection<T> where T : class
+	internal sealed class BridgeResponseCollection<T> : IBridgeResponseCollection<T> where T : class
 	{
 		/// <summary>
 		/// The request handler.
@@ -51,11 +52,11 @@ namespace BridgeStack
 			{
 				if (Response.Source == ResultSourceEnum.ApiException || Response.Source == ResultSourceEnum.BridgeException)
 				{
-					if (Response.Exception is Exception)
+					if (Response.Exception is BridgeException)
 					{
-						throw (Exception)Response.Exception;
+						throw (BridgeException)Response.Exception;
 					}
-					throw Response.Exception.InnerException;
+					throw new BridgeException(Error.UnspecifiedException); // sanity.
 				}
 				return Safe;
 			}
@@ -93,15 +94,6 @@ namespace BridgeStack
 				}
 			}
 			return this;
-		}
-
-		/// <summary>
-		/// Returns the first item in the response's result set. This method does not query the API.
-		/// </summary>
-		/// <returns>A wrapper around the result item.</returns>
-		public IBridgeResponseItem<T> Single()
-		{
-			return new BridgeResponseItem<T>(this);
 		}
 
 		/// <summary>

@@ -47,6 +47,7 @@
   <ItemGroup>
     <Compile Include="ApiResponseCache.cs" />
     <Compile Include="ApiResponseStore.cs" />
+    <Compile Include="Extensions\IBridgeResponseCollection.cs" />
     <Compile Include="StackClient\AuthorizedStackClient.cs" />
     <Compile Include="BridgeResponseCollection.cs" />
     <Compile Include="ApiWebClient.cs">
