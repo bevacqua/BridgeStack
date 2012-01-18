@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Linq;
 
 namespace BridgeStack.ConsoleApplication
 {
@@ -57,90 +58,90 @@ namespace BridgeStack.ConsoleApplication
 			PostsQuery p = new PostsQuery { Site = NetworkSiteEnum.StackOverflow };
 			IBridgeResponseCollection<Answer> answers = client.GetAnswers(p);
 
-			Console.WriteLine(answers.Safe[0].AnswerId);
+			Console.WriteLine(answers.First().AnswerId);
 		}
 		private static void GetBadges()
 		{
 			IBridgeResponseCollection<Badge> badges = client.GetBadges();
 
-			Console.WriteLine(badges.Safe[0].BadgeId);
+			Console.WriteLine(badges.First().BadgeId);
 		}
 		private static void GetComments()
 		{
 			CommentsQuery p = new CommentsQuery { Site = NetworkSiteEnum.StackOverflow };
 			IBridgeResponseCollection<Comment> comments = client.GetComments(p);
 
-			Console.WriteLine(comments.Safe[0].CommentId);
+			Console.WriteLine(comments.First().CommentId);
 		}
 		private static void GetErrors()
 		{
 			SimpleQuery p = new SimpleQuery { Site = NetworkSiteEnum.StackOverflow };
 			IBridgeResponseCollection<ApiException> errors = client.GetErrors(p);
 
-			Console.WriteLine(errors.Safe[0].ErrorDescription);
+			Console.WriteLine(errors.First().ErrorDescription);
 		}
 		private static void GetPosts()
 		{
 			PostsQuery p = new PostsQuery { Site = NetworkSiteEnum.StackOverflow };
 			IBridgeResponseCollection<Post> posts = client.GetPosts(p);
 
-			Console.WriteLine(posts.Safe[0].PostId);
+			Console.WriteLine(posts.First().PostId);
 		}
 		private static void GetQuestions()
 		{
 			QuestionsQuery p = new QuestionsQuery { Site = NetworkSiteEnum.StackOverflow };
 			IBridgeResponseCollection<Question> questions = client.GetQuestions(p);
 
-			Console.WriteLine(questions.Safe[0].QuestionId);
+			Console.WriteLine(questions.First().QuestionId);
 		}
 		private static void GetPrivileges()
 		{
 			SimpleQuery p = new SimpleQuery { Site = NetworkSiteEnum.StackOverflow };
 			IBridgeResponseCollection<Privilege> privileges = client.GetPrivileges(p);
 
-			Console.WriteLine(privileges.Safe[0].Description);
+			Console.WriteLine(privileges.First().Description);
 		}
 		private static void GetTags()
 		{
 			TagsQuery p = new TagsQuery { Site = NetworkSiteEnum.StackOverflow };
 			IBridgeResponseCollection<Tag> tags = client.GetTags(p);
 
-			Console.WriteLine(tags.Safe[0].Name);
+			Console.WriteLine(tags.First().Name);
 		}
 		private static void GetUsers()
 		{
 			UsersNamedQuery p = new UsersNamedQuery { Site = NetworkSiteEnum.StackOverflow };
 			IBridgeResponseCollection<User> users = client.GetUsers(p);
 
-			Console.WriteLine(users.Safe[0].DisplayName);
+			Console.WriteLine(users.First().DisplayName);
 		}
 		private static void GetAnswersWithParams()
 		{
 			PostsQuery p = new PostsQuery { Site = NetworkSiteEnum.StackOverflow, Sort = QuerySortEnum.Votes, Order = QueryOrderEnum.Descending, Min = 4000 };
 			IBridgeResponseCollection<Answer> answers = client.GetAnswers(p);
 
-			Console.WriteLine(answers.Safe[0].AnswerId);
+			Console.WriteLine(answers.First().AnswerId);
 		}
 		private static void GetAnswersByIds()
 		{
 			PostsQuery p = new PostsQuery { Site = NetworkSiteEnum.StackOverflow };
 			IBridgeResponseCollection<Answer> answers = client.GetAnswers(new long[] { 7300527 }, p);
 
-			Console.WriteLine(answers.Safe[0].AnswerId);
+			Console.WriteLine(answers.First().AnswerId);
 		}
 		private static void GetCommentsByAnswerIds()
 		{
 			CommentsQuery p = new CommentsQuery { Site = NetworkSiteEnum.StackOverflow };
 			IBridgeResponseCollection<Comment> comments = client.GetAnswersComments(new long[] { }, p);
 
-			Console.WriteLine(comments.Safe[0].CommentId);
+			Console.WriteLine(comments.First().CommentId);
 		}
 		private static void GetMyComments()
 		{
 			client.Default.Site = NetworkSiteEnum.StackOverflow;
 			IBridgeResponseCollection<Comment> comments = authClient.GetMyComments();
 
-			Console.WriteLine(comments.Safe[0].CommentId);
+			Console.WriteLine(comments.First().CommentId);
 		}
 		private static void GetMySilverBadges()
 		{
