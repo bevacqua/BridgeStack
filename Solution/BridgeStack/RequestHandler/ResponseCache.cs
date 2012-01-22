@@ -32,12 +32,12 @@ namespace BridgeStack
 		/// <para>If the endpoint is present, it means the request is being processed. In this case we will wait on the processing to end before returning a result.</para>
 		/// </summary>
 		/// <typeparam name="T">The strong type of the expected API result.</typeparam>
-		/// <param name="endpoint">The API endpoint</param>
+		/// <param name="builder">The object that builds the API route endpoint.</param>
 		/// <param name="pushEmpty">True to push an empty value into the cache if the endpoint isn't present yet.</param>
 		/// <returns>Returns an API response cache item if successful, null otherwise.</returns>
-		public IResponseCacheItem<T> Get<T>(string endpoint, bool pushEmpty = false) where T : class
+		public IResponseCacheItem<T> Get<T>(IApiEndpointBuilder builder, bool pushEmpty = false) where T : class
 		{
-			return Get<T>(endpoint, pushEmpty, 0);
+			return Get<T>(builder, pushEmpty, 0);
 		}
 
 		/// <summary>
@@ -46,12 +46,13 @@ namespace BridgeStack
 		/// <para>If the endpoint is present, it means the request is being processed. In this case we will wait on the processing to end before returning a result.</para>
 		/// </summary>
 		/// <typeparam name="T">The strong type of the expected API result.</typeparam>
-		/// <param name="endpoint">The API endpoint</param>
+		/// <param name="builder">The object that builds the API route endpoint.</param>
 		/// <param name="pushEmpty">True to push an empty value into the cache if the endpoint isn't present yet.</param>
 		/// <param name="retries">The amount of failed push attempts.</param>
 		/// <returns>Returns an API response cache item if successful, null otherwise.</returns>
-		private IResponseCacheItem<T> Get<T>(string endpoint, bool pushEmpty, int retries) where T : class
+		private IResponseCacheItem<T> Get<T>(IApiEndpointBuilder builder, bool pushEmpty, int retries) where T : class
 		{
+			string endpoint = builder.ToString();
 			IResponseCacheItem cacheItem;
 			if (Cache.TryGetValue(endpoint, out cacheItem))
 			{
@@ -69,13 +70,13 @@ namespace BridgeStack
 				IResponseCacheItem value;
 				Cache.TryRemove(endpoint, out value);
 			}
-			if (!pushEmpty || Push<T>(endpoint, null) || retries > 1) // max retries, sanity.
+			if (!pushEmpty || Push<T>(builder, null) || retries > 1) // max retries, sanity.
 			{
 				return null;
 			}
 			else
 			{
-				return Get<T>(endpoint, true, ++retries); // retry push.
+				return Get<T>(builder, true, ++retries); // retry push.
 			}
 		}
 
@@ -83,11 +84,12 @@ namespace BridgeStack
 		/// Attempts to push API responses into the cache store.
 		/// </summary>
 		/// <typeparam name="T">The strong type of the expected API result.</typeparam>
-		/// <param name="endpoint">The queried API endpoint.</param>
+		/// <param name="builder">The object that builds the API route endpoint.</param>
 		/// <param name="response">The API response.</param>
 		/// <returns>True if the operation was successful, false otherwise.</returns>
-		public bool Push<T>(string endpoint, IApiResponse<T> response) where T : class
+		public bool Push<T>(IApiEndpointBuilder builder, IApiResponse<T> response) where T : class
 		{
+			string endpoint = builder.ToString();
 			if (endpoint.NullOrEmpty())
 			{
 				return false;

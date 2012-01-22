@@ -11,9 +11,9 @@ namespace BridgeStack
 		/// When necessary, throttles requests in order to prevent flooding the API endpoints.
 		/// </summary>
 		/// <typeparam name="T">The strong type of the expected API result against which to deserialize JSON.</typeparam>
-		/// <param name="endpoint">The API endpoint to query.</param>
+		/// <param name="builder">The object that builds the API route endpoint.</param>
 		/// <returns>The API response object.</returns>
-		IApiResponse<T> Throttle<T>(string endpoint) where T : class;
+		IApiResponse<T> Throttle<T>(IApiEndpointBuilder builder) where T : class;
 
 		/// <summary>
 		/// The total amount of requests performed through this request throttler.

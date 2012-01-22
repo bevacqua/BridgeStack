@@ -43,12 +43,10 @@ namespace BridgeStack
 			{
 				throw new ArgumentNullException("builder");
 			}
-			string endpoint = null;
 			IApiResponse<T> result = null;
 			try
 			{
-				endpoint = builder.ToString();
-				result = InternalProcessing<T>(endpoint); // Source = Api | Cache
+				result = InternalProcessing<T>(builder); // Source = Api | Cache
 			}
 			catch (BridgeException api)
 			{
@@ -66,7 +64,7 @@ namespace BridgeStack
 			{
 				if (result != null && result.Source != ResultSourceEnum.Cache)
 				{
-					Client.Cache.Push(endpoint, result);
+					Client.Cache.Push(builder, result);
 				}
 			}
 			return result;
@@ -76,23 +74,23 @@ namespace BridgeStack
 		/// Checks the cache and then performs the actual request, if required.
 		/// </summary>
 		/// <typeparam name="T">The strong type of the expected API result against which to deserialize JSON.</typeparam>
-		/// <param name="endpoint">The API endpoint to query.</param>
+		/// <param name="builder">The object that builds the API route endpoint.</param>
 		/// <returns>The API response object.</returns>
-		private IApiResponse<T> InternalProcessing<T>(string endpoint) where T : class
+		private IApiResponse<T> InternalProcessing<T>(IApiEndpointBuilder builder) where T : class
 		{
-			IApiResponse<T> result = FetchFromCache<T>(endpoint);
-			return result ?? FetchFromThrottler<T>(endpoint);
+			IApiResponse<T> result = FetchFromCache<T>(builder);
+			return result ?? FetchFromThrottler<T>(builder);
 		}
 
 		/// <summary>
 		/// Attempts to fetch the response object from the cache instead of directly from the API.
 		/// </summary>
 		/// <typeparam name="T">The strong type of the expected API result against which to deserialize JSON.</typeparam>
-		/// <param name="endpoint">The API endpoint to query.</param>
+		/// <param name="builder">The object that builds the API route endpoint.</param>
 		/// <returns>The API response object.</returns>
-		private IApiResponse<T> FetchFromCache<T>(string endpoint) where T : class
+		private IApiResponse<T> FetchFromCache<T>(IApiEndpointBuilder builder) where T : class
 		{
-			IResponseCacheItem<T> cacheItem = Client.Cache.Get<T>(endpoint, true);
+			IResponseCacheItem<T> cacheItem = Client.Cache.Get<T>(builder, true);
 			if (cacheItem != null)
 			{
 				IApiResponse<T> result = cacheItem.Response;
@@ -106,11 +104,11 @@ namespace BridgeStack
 		/// Throttling ensures the API isn't flooded with requests and prevents us from getting cut off from the API.
 		/// </summary>
 		/// <typeparam name="T">The strong type of the expected API result against which to deserialize JSON.</typeparam>
-		/// <param name="endpoint">The API endpoint to query.</param>
+		/// <param name="builder">The object that builds the API route endpoint.</param>
 		/// <returns>The API response object.</returns>
-		private IApiResponse<T> FetchFromThrottler<T>(string endpoint) where T : class
+		private IApiResponse<T> FetchFromThrottler<T>(IApiEndpointBuilder builder) where T : class
 		{
-			return Client.Throttler.Throttle<T>(endpoint);
+			return Client.Throttler.Throttle<T>(builder);
 		}
 
 		/// <summary>

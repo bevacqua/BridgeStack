@@ -120,6 +120,11 @@ namespace BridgeStack
 		}
 
 		/// <summary>
+		/// The API endpoint built by this instance of an API endpoint builder.
+		/// </summary>
+		private string _out;
+
+		/// <summary>
 		/// Builds and returns the target endpoint Uri.
 		/// </summary>
 		/// <returns>Returns the resulting endpoint, could throw exceptions.</returns>
@@ -136,6 +141,7 @@ namespace BridgeStack
 			}
 			string parameters = BuildParameters();
 			string endpoint = EndpointBuilder.Endpoint.FormatWith(ApiEndpoint, method, parameters);
+			_out = endpoint;
 			return endpoint;
 		}
 
@@ -205,7 +211,7 @@ namespace BridgeStack
 		/// <returns>The endpoint successfully built, or throws an exception.</returns>
 		public override string ToString()
 		{
-			return Build();
+			return _out ?? Build();
 		}
 	}
 }
