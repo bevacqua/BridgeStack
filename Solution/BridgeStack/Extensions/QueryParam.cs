@@ -72,17 +72,7 @@ namespace BridgeStack
 				}
 				else if (gotten is Enum)
 				{
-					string value;
-					// get custom enum values, if available.
-					var alt = ((Enum)gotten).GetCustomAttribute<EnumMemberAttribute>();
-					if (alt != null && !alt.Value.NullOrEmpty())
-					{
-						value = alt.Value;
-					}
-					else
-					{
-						value = Enum.GetName(gotten.GetType(), gotten);
-					}
+					string value = ((Enum)gotten).GetValue();
 
 					if (entity is ISortableQuery && gotten is QuerySortEnum)
 					{

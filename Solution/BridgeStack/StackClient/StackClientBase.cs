@@ -1187,7 +1187,7 @@ namespace BridgeStack
 		/// <param name="method">The method on the API to be called.</param>
 		/// <param name="vectors">The request vectors to serialize for this API call.</param>
 		/// <returns>An API endpoint builder instance.</returns>
-		protected IApiEndpointBuilder GetApiEndpointBuilder(string method, IRequestVector[] vectors = null)
+		protected IApiEndpointBuilder GetApiEndpointBuilder(ApiEndpointEnum method, IRequestVector[] vectors = null)
 		{
 			IApiEndpointBuilder builder = new ApiEndpointBuilder(this, method, AppKey);
 			return vectors == null ? builder : builder.Vectorized(vectors);
@@ -1201,7 +1201,7 @@ namespace BridgeStack
 		/// <param name="method">The method on the API to be called.</param>
 		/// <param name="parameters">The query string parameters.</param>
 		/// <returns>A response that comes either from the API, the internal cache, or an exception. Wrapped in a common API response object.</returns>
-		protected IBridgeResponseCollection<TResult> GetApiResultCollection<TResult, TQuery>(string method, TQuery parameters)
+		protected IBridgeResponseCollection<TResult> GetApiResultCollection<TResult, TQuery>(ApiEndpointEnum method, TQuery parameters)
 			where TResult : class
 			where TQuery : class, IQuery, new()
 		{
@@ -1219,7 +1219,7 @@ namespace BridgeStack
 		/// <param name="vectors">The request vectors to serialize for this API call.</param>
 		/// <param name="parameters">The query string parameters.</param>
 		/// <returns>A response that comes either from the API, the internal cache, or an exception. Wrapped in a common API response object.</returns>
-		protected IBridgeResponseCollection<TResult> GetApiResultCollection<TResult, TQuery>(string method, IRequestVector[] vectors, TQuery parameters)
+		protected IBridgeResponseCollection<TResult> GetApiResultCollection<TResult, TQuery>(ApiEndpointEnum method, IRequestVector[] vectors, TQuery parameters)
 			where TResult : class
 			where TQuery : class, IQuery, new()
 		{
@@ -1237,7 +1237,7 @@ namespace BridgeStack
 		/// <param name="vector">The vector to serialize for this API call.</param>
 		/// <param name="parameters">The query string parameters.</param>
 		/// <returns>A response that comes either from the API, the internal cache, or an exception. Wrapped in a common API response object.</returns>
-		protected IBridgeResponseCollection<TResult> GetApiResultCollection<TResult, TQuery>(string method, IRequestVector vector, TQuery parameters)
+		protected IBridgeResponseCollection<TResult> GetApiResultCollection<TResult, TQuery>(ApiEndpointEnum method, IRequestVector vector, TQuery parameters)
 			where TResult : class
 			where TQuery : class, IQuery, new()
 		{
@@ -1252,7 +1252,7 @@ namespace BridgeStack
 		/// <param name="method">The method on the API to be called.</param>
 		/// <param name="parameters">The query string parameters.</param>
 		/// <returns>A response that comes either from the API, the internal cache, or an exception. Wrapped in a common API response object.</returns>
-		protected IBridgeResponseItem<TResult> GetApiResultItem<TResult, TQuery>(string method, TQuery parameters = null)
+		protected IBridgeResponseItem<TResult> GetApiResultItem<TResult, TQuery>(ApiEndpointEnum method, TQuery parameters = null)
 			where TResult : class
 			where TQuery : class, IQuery, new()
 		{
@@ -1268,7 +1268,7 @@ namespace BridgeStack
 		/// <param name="vector">The vector to serialize for this API call.</param>
 		/// <param name="parameters">The query string parameters.</param>
 		/// <returns>A response that comes either from the API, the internal cache, or an exception. Wrapped in a common API response object.</returns>
-		protected IBridgeResponseItem<TResult> GetApiResultItem<TResult, TQuery>(string method, IRequestVector vector, TQuery parameters = null)
+		protected IBridgeResponseItem<TResult> GetApiResultItem<TResult, TQuery>(ApiEndpointEnum method, IRequestVector vector, TQuery parameters = null)
 			where TResult : class
 			where TQuery : class, IQuery, new()
 		{
@@ -1284,7 +1284,7 @@ namespace BridgeStack
 		/// <param name="vectors">The request vectors to serialize for this API call.</param>
 		/// <param name="parameters">The query string parameters.</param>
 		/// <returns>A response that comes either from the API, the internal cache, or an exception. Wrapped in a common API response object.</returns>
-		protected IBridgeResponseItem<TResult> GetApiResultItem<TResult, TQuery>(string method, IRequestVector[] vectors, TQuery parameters = null)
+		protected IBridgeResponseItem<TResult> GetApiResultItem<TResult, TQuery>(ApiEndpointEnum method, IRequestVector[] vectors, TQuery parameters = null)
 			where TResult : class
 			where TQuery : class, IQuery, new()
 		{

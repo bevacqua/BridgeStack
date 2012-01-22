@@ -61,7 +61,7 @@ namespace BridgeStack
 		/// <summary>
 		/// The API method to target.
 		/// </summary>
-		public string ApiMethod { get; set; }
+		public ApiEndpointEnum ApiMethod { get; set; }
 
 		/// <summary>
 		/// The application's key. Grants a higher request quota.
@@ -102,19 +102,19 @@ namespace BridgeStack
 		/// <param name="method">The API method to target.</param>
 		/// <param name="appKey">The application's key. Grants a higher request quota.</param>
 		/// <param name="accessToken">The user's access token. Grants authentication and access to methods which require that the application be acting on behalf of a user in order to be invoked.</param>
-		public ApiEndpointBuilder(IStackClient client, string method, string appKey = null, string accessToken = null)
+		public ApiEndpointBuilder(IStackClient client, ApiEndpointEnum? method, string appKey = null, string accessToken = null)
 			: this()
 		{
 			if (client == null)
 			{
 				throw new ArgumentNullException("client");
 			}
-			if (method == null)
+			if (!method.HasValue)
 			{
 				throw new ArgumentNullException("method");
 			}
 			Client = client;
-			ApiMethod = method;
+			ApiMethod = method.Value;
 			AppKey = appKey;
 			AccessToken = accessToken;
 		}
@@ -125,10 +125,10 @@ namespace BridgeStack
 		/// <returns>Returns the resulting endpoint, could throw exceptions.</returns>
 		private string Build()
 		{
-			string method = ApiMethod;
+			string method = ApiMethod.GetValue();
 			if (method.StartsWith("/"))
 			{
-				method = ApiMethod.Substring(1);
+				method = method.Substring(1);
 			}
 			foreach (IRequestVector v in Vectors) // apply all request vectors.
 			{

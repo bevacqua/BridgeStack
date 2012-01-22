@@ -36,7 +36,7 @@ namespace BridgeStack
 		/// <returns>Returns a stream of events that have occurred on the site.</returns>
 		public IBridgeResponseCollection<Event> GetEvents(SinceQuery parameters = null)
 		{
-			return GetApiResultCollection<Event, SinceQuery>("events", parameters);
+			return GetApiResultCollection<Event, SinceQuery>(ApiEndpointEnum.Events, parameters);
 		}
 
 		/// <summary>
@@ -49,7 +49,7 @@ namespace BridgeStack
 		/// <returns>Returns all items in a user's inbox.</returns>
 		public IBridgeResponseCollection<InboxItem> GetUserInbox(long id, SimpleQuery parameters = null)
 		{
-			return GetApiResultCollection<InboxItem, SimpleQuery>("users/{id}/inbox", CreateIdVector(id), parameters);
+			return GetApiResultCollection<InboxItem, SimpleQuery>(ApiEndpointEnum.UserInbox, CreateIdVector(id), parameters);
 		}
 
 		/// <summary>
@@ -62,7 +62,7 @@ namespace BridgeStack
 		/// <returns>Returns unread items in a user's inbox.</returns>
 		public IBridgeResponseCollection<InboxItem> GetUserInboxUnread(long id, SinceQuery parameters = null)
 		{
-			return GetApiResultCollection<InboxItem, SinceQuery>("users/{id}/inbox/unread", CreateIdVector(id), parameters);
+			return GetApiResultCollection<InboxItem, SinceQuery>(ApiEndpointEnum.UserInboxUnread, CreateIdVector(id), parameters);
 		}
 
 		/// <summary>
@@ -74,7 +74,7 @@ namespace BridgeStack
 		/// <returns>Returns the authenticated user.</returns>
 		public IBridgeResponseItem<User> GetMyUser(UsersQuery parameters = null)
 		{
-			return GetApiResultItem<User, UsersQuery>("me", parameters);
+			return GetApiResultItem<User, UsersQuery>(ApiEndpointEnum.Me, parameters);
 		}
 
 		/// <summary>
@@ -86,7 +86,7 @@ namespace BridgeStack
 		/// <returns>Returns the answers the authenticated user posted.</returns>
 		public IBridgeResponseCollection<Answer> GetMyAnswers(PostsQuery parameters = null)
 		{
-			return GetApiResultCollection<Answer, PostsQuery>("me/answers", parameters);
+			return GetApiResultCollection<Answer, PostsQuery>(ApiEndpointEnum.MyAnswers, parameters);
 		}
 
 		/// <summary>
@@ -98,7 +98,7 @@ namespace BridgeStack
 		/// <returns>Returns the badges the authenticated user earned.</returns>
 		public IBridgeResponseCollection<Badge> GetMyBadges(BadgesOnUserQuery parameters = null)
 		{
-			return GetApiResultCollection<Badge, BadgesOnUserQuery>("me/badges", parameters);
+			return GetApiResultCollection<Badge, BadgesOnUserQuery>(ApiEndpointEnum.MyBadges, parameters);
 		}
 
 		/// <summary>
@@ -110,7 +110,7 @@ namespace BridgeStack
 		/// <returns>Returns the comments the authenticated user posted.</returns>
 		public IBridgeResponseCollection<Comment> GetMyComments(CommentsQuery parameters = null)
 		{
-			return GetApiResultCollection<Comment, CommentsQuery>("me/comments", parameters);
+			return GetApiResultCollection<Comment, CommentsQuery>(ApiEndpointEnum.MyComments, parameters);
 		}
 
 		/// <summary>
@@ -123,7 +123,7 @@ namespace BridgeStack
 		/// <returns>Returns the comments the authenticated user posted in reply to  the single user identified by <paramref name="toId"/>.</returns>
 		public IBridgeResponseCollection<Comment> GetMyCommentsInReplyTo(long toId, CommentsQuery parameters = null)
 		{
-			return GetApiResultCollection<Comment, CommentsQuery>("me/comments{toid}", CreateNamedVector("{toid}", new[] { toId }), parameters);
+			return GetApiResultCollection<Comment, CommentsQuery>(ApiEndpointEnum.MyCommentsTo, CreateNamedVector("{toid}", new[] { toId }), parameters);
 		}
 
 		/// <summary>
@@ -135,19 +135,19 @@ namespace BridgeStack
 		/// <returns>Returns the questions the authenticated user favorited.</returns>
 		public IBridgeResponseCollection<Question> GetMyQuestionFavorites(QuestionFavoritesQuery parameters = null)
 		{
-			return GetApiResultCollection<Question, QuestionFavoritesQuery>("me/favorites", parameters);
+			return GetApiResultCollection<Question, QuestionFavoritesQuery>(ApiEndpointEnum.MyFavorites, parameters);
 		}
 
 		/// <summary>
 		/// Makes a request to API method /me/mentioned
 		/// <para>Documentation can be found following the link below:</para>
-		/// <para>https://api.stackexchange.com/docs/me-mentions</para>
+		/// <para>https://api.stackexchange.com/docs/me-mentioned</para>
 		/// </summary>
 		/// <param name="parameters">The request parameters.</param>
 		/// <returns>Returns the comments the authenticated user were mentioned in.</returns>
 		public IBridgeResponseCollection<Comment> GetMyMentions(CommentsQuery parameters = null)
 		{
-			return GetApiResultCollection<Comment, CommentsQuery>("me/mentioned", parameters);
+			return GetApiResultCollection<Comment, CommentsQuery>(ApiEndpointEnum.MyMentions, parameters);
 		}
 
 		/// <summary>
@@ -159,7 +159,7 @@ namespace BridgeStack
 		/// <returns>Returns the privileges the authenticated user has.</returns>
 		public IBridgeResponseCollection<Privilege> GetMyPrivileges(SimpleQuery parameters = null)
 		{
-			return GetApiResultCollection<Privilege, SimpleQuery>("me/privileges", parameters);
+			return GetApiResultCollection<Privilege, SimpleQuery>(ApiEndpointEnum.MyPrivileges, parameters);
 		}
 
 		/// <summary>
@@ -171,7 +171,7 @@ namespace BridgeStack
 		/// <returns>Returns the questions the authenticated user asked.</returns>
 		public IBridgeResponseCollection<Question> GetMyQuestions(PostsQuery parameters = null)
 		{
-			return GetApiResultCollection<Question, PostsQuery>("me/questions", parameters);
+			return GetApiResultCollection<Question, PostsQuery>(ApiEndpointEnum.MyQuestions, parameters);
 		}
 
 		/// <summary>
@@ -183,7 +183,7 @@ namespace BridgeStack
 		/// <returns>Returns the questions the authenticated user asked, which have no answers.</returns>
 		public IBridgeResponseCollection<Question> GetMyQuestionsWithNoAnswers(PostsQuery parameters = null)
 		{
-			return GetApiResultCollection<Question, PostsQuery>("me/questions/no-answers", parameters);
+			return GetApiResultCollection<Question, PostsQuery>(ApiEndpointEnum.MyNoAnswerQuestions, parameters);
 		}
 
 		/// <summary>
@@ -195,7 +195,7 @@ namespace BridgeStack
 		/// <returns>Returns the questions the authenticated user asked, which have at least one answer, but no accepted answer.</returns>
 		public IBridgeResponseCollection<Question> GetMyQuestionsWithNoAcceptedAnswer(PostsQuery parameters = null)
 		{
-			return GetApiResultCollection<Question, PostsQuery>("me/questions/unaccepted", parameters);
+			return GetApiResultCollection<Question, PostsQuery>(ApiEndpointEnum.MyUnacceptedQuestions, parameters);
 		}
 
 		/// <summary>
@@ -207,7 +207,7 @@ namespace BridgeStack
 		/// <returns>Returns the questions the authenticated user asked, which the site consideres unanswered, while still having at least one answer posted.</returns>
 		public IBridgeResponseCollection<Question> GetMyQuestionsConsideredUnanswered(PostsQuery parameters = null)
 		{
-			return GetApiResultCollection<Question, PostsQuery>("me/questions/unanswered", parameters);
+			return GetApiResultCollection<Question, PostsQuery>(ApiEndpointEnum.MyUnansweredQuestions, parameters);
 		}
 
 		/// <summary>
@@ -219,7 +219,7 @@ namespace BridgeStack
 		/// <returns>Returns the reputation changes for the authenticated user.</returns>
 		public IBridgeResponseCollection<Reputation> GetMyReputationChanges(RangedQuery parameters = null)
 		{
-			return GetApiResultCollection<Reputation, RangedQuery>("me/reputation", parameters);
+			return GetApiResultCollection<Reputation, RangedQuery>(ApiEndpointEnum.MyReputation, parameters);
 		}
 
 		/// <summary>
@@ -231,7 +231,7 @@ namespace BridgeStack
 		/// <returns>Returns the suggested edits the authenticated user submitted.</returns>
 		public IBridgeResponseCollection<SuggestedEdit> GetMySuggestedEdits(SuggestedEditsQuery parameters = null)
 		{
-			return GetApiResultCollection<SuggestedEdit, SuggestedEditsQuery>("me/suggested-edits", parameters);
+			return GetApiResultCollection<SuggestedEdit, SuggestedEditsQuery>(ApiEndpointEnum.MySuggestedEdits, parameters);
 		}
 
 		/// <summary>
@@ -243,7 +243,7 @@ namespace BridgeStack
 		/// <returns>Returns the tags the authenticated user have been active in.</returns>
 		public IBridgeResponseCollection<Tag> GetMyActiveTags(TagsQuery parameters = null)
 		{
-			return GetApiResultCollection<Tag, TagsQuery>("me/tags", parameters);
+			return GetApiResultCollection<Tag, TagsQuery>(ApiEndpointEnum.MyTags, parameters);
 		}
 
 		/// <summary>
@@ -256,7 +256,7 @@ namespace BridgeStack
 		/// <returns>Returns the top answers the authenticated user has posted in response to questions with the given <paramref name="tags"/>.</returns>
 		public IBridgeResponseCollection<Answer> GetMyTopAnswers(string[] tags, PostsQuery parameters = null)
 		{
-			return GetApiResultCollection<Answer, PostsQuery>("me/tags/{tags}/top-answers", CreateTagsVector(tags), parameters);
+			return GetApiResultCollection<Answer, PostsQuery>(ApiEndpointEnum.MyTopAnswersInTags, CreateTagsVector(tags), parameters);
 		}
 
 		/// <summary>
@@ -269,7 +269,7 @@ namespace BridgeStack
 		/// <returns>Returns the top questions the authenticated user has asked with the given <paramref name="tags"/>.</returns>
 		public IBridgeResponseCollection<Question> GetMyTopQuestions(string[] tags, PostsQuery parameters = null)
 		{
-			return GetApiResultCollection<Question, PostsQuery>("me/tags/{tags}/top-questions", CreateTagsVector(tags), parameters);
+			return GetApiResultCollection<Question, PostsQuery>(ApiEndpointEnum.MyTopQuestionsInTags, CreateTagsVector(tags), parameters);
 		}
 
 		/// <summary>
@@ -281,7 +281,7 @@ namespace BridgeStack
 		/// <returns>Returns a subset of actions the authenticated user have taken on the system.</returns>
 		public IBridgeResponseCollection<UserTimeline> GetMyTimeline(RangedQuery parameters = null)
 		{
-			return GetApiResultCollection<UserTimeline, RangedQuery>("me/timeline", parameters);
+			return GetApiResultCollection<UserTimeline, RangedQuery>(ApiEndpointEnum.MyTimeline, parameters);
 		}
 
 		/// <summary>
@@ -293,7 +293,7 @@ namespace BridgeStack
 		/// <returns>Returns the authenticated user's top 30 tags by answer score.</returns>
 		public IBridgeResponseCollection<TagTop> GetMyTopAnswerTags(SimpleQuery parameters = null)
 		{
-			return GetApiResultCollection<TagTop, SimpleQuery>("me/top-answer-tags", parameters);
+			return GetApiResultCollection<TagTop, SimpleQuery>(ApiEndpointEnum.MyTopAnswerTags, parameters);
 		}
 
 		/// <summary>
@@ -305,7 +305,7 @@ namespace BridgeStack
 		/// <returns>Returns the authenticated user's top 30 tags by question score.</returns>
 		public IBridgeResponseCollection<TagTop> GetMyTopQuestionTags(SimpleQuery parameters = null)
 		{
-			return GetApiResultCollection<TagTop, SimpleQuery>("me/top-question-tags", parameters);
+			return GetApiResultCollection<TagTop, SimpleQuery>(ApiEndpointEnum.MyTopQuestionTags, parameters);
 		}
 
 		/// <summary>
@@ -317,7 +317,7 @@ namespace BridgeStack
 		/// <returns>Returns all items in the authenticated user's inbox.</returns>
 		public IBridgeResponseCollection<InboxItem> GetMyInbox(SimpleQuery parameters = null)
 		{
-			return GetApiResultCollection<InboxItem, SimpleQuery>("me/inbox", parameters);
+			return GetApiResultCollection<InboxItem, SimpleQuery>(ApiEndpointEnum.MyInbox, parameters);
 		}
 
 		/// <summary>
@@ -329,7 +329,7 @@ namespace BridgeStack
 		/// <returns>Returns unread items in the authenticated user's inbox.</returns>
 		public IBridgeResponseCollection<InboxItem> GetMyInboxUnread(SinceQuery parameters = null)
 		{
-			return GetApiResultCollection<InboxItem, SinceQuery>("me/inbox/unread", parameters);
+			return GetApiResultCollection<InboxItem, SinceQuery>(ApiEndpointEnum.MyInboxUnread, parameters);
 		}
 
 		/// <summary>
@@ -341,7 +341,7 @@ namespace BridgeStack
 		/// <returns>Returns all of a user's associated accounts for a set of authenticated user.</returns>
 		public IBridgeResponseCollection<NetworkUser> GetMyAssociatedAccounts(SimpleQuery parameters = null)
 		{
-			return GetApiResultCollection<NetworkUser, SimpleQuery>("me/associated", parameters);
+			return GetApiResultCollection<NetworkUser, SimpleQuery>(ApiEndpointEnum.MyAssociatedUsers, parameters);
 		}
 
 		/// <summary>
@@ -353,7 +353,7 @@ namespace BridgeStack
 		/// <returns>Returns all items in a user's inbox.</returns>
 		public IBridgeResponseCollection<InboxItem> GetNetworkInbox(SimpleQuery parameters = null)
 		{
-			return GetApiResultCollection<InboxItem, SimpleQuery>("inbox", parameters);
+			return GetApiResultCollection<InboxItem, SimpleQuery>(ApiEndpointEnum.Inbox, parameters);
 		}
 
 		/// <summary>
@@ -365,7 +365,7 @@ namespace BridgeStack
 		/// <returns>Returns the unread items in a user's inbox.</returns>
 		public IBridgeResponseCollection<InboxItem> GetNetworkInboxUnread(SinceQuery parameters = null)
 		{
-			return GetApiResultCollection<InboxItem, SinceQuery>("inbox/unread", parameters);
+			return GetApiResultCollection<InboxItem, SinceQuery>(ApiEndpointEnum.InboxUnread, parameters);
 		}
 
 		#endregion

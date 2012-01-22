@@ -45,14 +45,16 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="DataContracts\ApiEndpointBuilder\ApiEndpointEnum.cs" />
+    <Compile Include="Extensions\Enum.cs" />
     <Compile Include="RequestHandler\ResponseCacheItem.cs" />
     <Compile Include="RequestHandler\ResponseCache.cs" />
     <Compile Include="DataContracts\RequestHandler\IRequestThrottler.cs" />
-    <Compile Include="EventLog\EventSeverityEnum.cs" />
+    <Compile Include="DataContracts\EventLog\EventSeverityEnum.cs" />
     <Compile Include="DataContracts\EventLog\IEventLog.cs" />
     <Compile Include="Extensions\IBridgeResponseCollection.cs" />
     <Compile Include="EventLog\EventLog.cs" />
-    <Compile Include="RequestHandler\CacheItemStateEnum.cs" />
+    <Compile Include="DataContracts\RequestHandler\CacheItemStateEnum.cs" />
     <Compile Include="DataContracts\EventLog\IEventLoggedArgs.cs" />
     <Compile Include="DataContracts\Clients\IStackClientPlugin.cs" />
     <Compile Include="EventLog\OnEventLogged.cs" />

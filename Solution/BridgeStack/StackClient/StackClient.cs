@@ -28,7 +28,7 @@ namespace BridgeStack
 		/// <returns>Returns all the undeleted answers in the system.</returns>
 		public override IBridgeResponseCollection<Answer> GetAnswers(PostsQuery parameters = null)
 		{
-			return GetApiResultCollection<Answer, PostsQuery>("answers", parameters);
+			return GetApiResultCollection<Answer, PostsQuery>(ApiEndpointEnum.Answers, parameters);
 		}
 
 		/// <summary>
@@ -41,7 +41,7 @@ namespace BridgeStack
 		/// <returns>Returns the set of answers identified by <paramref name="ids"/>.</returns>
 		public override IBridgeResponseCollection<Answer> GetAnswers(long[] ids, PostsQuery parameters = null)
 		{
-			return GetApiResultCollection<Answer, PostsQuery>("answers/{ids}", CreateIdsVector(ids), parameters);
+			return GetApiResultCollection<Answer, PostsQuery>(ApiEndpointEnum.AnswersByIds, CreateIdsVector(ids), parameters);
 		}
 
 		/// <summary>
@@ -54,7 +54,7 @@ namespace BridgeStack
 		/// <returns>Returns the comments on a set of answers identified by <paramref name="ids"/>..</returns>
 		public override IBridgeResponseCollection<Comment> GetAnswersComments(long[] ids, CommentsQuery parameters = null)
 		{
-			return GetApiResultCollection<Comment, CommentsQuery>("answers/{ids}/comments", CreateIdsVector(ids), parameters);
+			return GetApiResultCollection<Comment, CommentsQuery>(ApiEndpointEnum.CommentsOnAnswers, CreateIdsVector(ids), parameters);
 		}
 
 		/// <summary>
@@ -92,7 +92,7 @@ namespace BridgeStack
 		/// <returns>Returns all the badges in the system.</returns>
 		public override IBridgeResponseCollection<Badge> GetBadges(BadgesNamedQuery parameters = null)
 		{
-			return GetApiResultCollection<Badge, BadgesNamedQuery>("badges", parameters);
+			return GetApiResultCollection<Badge, BadgesNamedQuery>(ApiEndpointEnum.Badges, parameters);
 		}
 
 		/// <summary>
@@ -105,7 +105,7 @@ namespace BridgeStack
 		/// <returns>Returns the set of badges identified by <paramref name="ids"/>.</returns>
 		public override IBridgeResponseCollection<Badge> GetBadges(long[] ids, BadgesQuery parameters = null)
 		{
-			return GetApiResultCollection<Badge, BadgesQuery>("badges/{ids}", CreateIdsVector(ids), parameters);
+			return GetApiResultCollection<Badge, BadgesQuery>(ApiEndpointEnum.BadgesByIds, CreateIdsVector(ids), parameters);
 		}
 
 		/// <summary>
@@ -117,7 +117,7 @@ namespace BridgeStack
 		/// <returns>Returns recently awarded badges in the system.</returns>
 		public override IBridgeResponseCollection<Badge> GetBadgesRecipients(RangedQuery parameters = null)
 		{
-			return GetApiResultCollection<Badge, RangedQuery>("badges/recipients", parameters);
+			return GetApiResultCollection<Badge, RangedQuery>(ApiEndpointEnum.BadgeRecipients, parameters);
 		}
 
 		/// <summary>
@@ -130,7 +130,7 @@ namespace BridgeStack
 		/// <returns>Returns recently awarded badges in the system, constrained to a certain set of badges identified by <paramref name="ids"/>.</returns>
 		public override IBridgeResponseCollection<Badge> GetBadgesRecipients(long[] ids, RangedQuery parameters = null)
 		{
-			return GetApiResultCollection<Badge, RangedQuery>("badges/{ids}/recipients", CreateIdsVector(ids), parameters);
+			return GetApiResultCollection<Badge, RangedQuery>(ApiEndpointEnum.BadgeRecipientsByIds, CreateIdsVector(ids), parameters);
 		}
 
 		/// <summary>
@@ -142,7 +142,7 @@ namespace BridgeStack
 		/// <returns>Returns all explicitly named badges in the system.</returns>
 		public override IBridgeResponseCollection<Badge> GetBadgesExplicitlyNamed(BadgesNamedQuery parameters = null)
 		{
-			return GetApiResultCollection<Badge, BadgesNamedQuery>("badges/name", parameters);
+			return GetApiResultCollection<Badge, BadgesNamedQuery>(ApiEndpointEnum.BadgesByName, parameters);
 		}
 
 		/// <summary>
@@ -154,7 +154,7 @@ namespace BridgeStack
 		/// <returns>Returns the badges that are awarded for participation in specific tags.</returns>
 		public override IBridgeResponseCollection<Badge> GetBadgesOnTags(BadgesNamedQuery parameters = null)
 		{
-			return GetApiResultCollection<Badge, BadgesNamedQuery>("badges/tags", parameters);
+			return GetApiResultCollection<Badge, BadgesNamedQuery>(ApiEndpointEnum.BadgesByTag, parameters);
 		}
 
 		/// <summary>
@@ -192,7 +192,7 @@ namespace BridgeStack
 		/// <returns>Returns all the comments on the site.</returns>
 		public override IBridgeResponseCollection<Comment> GetComments(CommentsQuery parameters = null)
 		{
-			return GetApiResultCollection<Comment, CommentsQuery>("comments", parameters);
+			return GetApiResultCollection<Comment, CommentsQuery>(ApiEndpointEnum.Comments, parameters);
 		}
 
 		/// <summary>
@@ -205,7 +205,7 @@ namespace BridgeStack
 		/// <returns>Returns the set of comments identified by <paramref name="ids"/>.</returns>
 		public override IBridgeResponseCollection<Comment> GetComments(long[] ids, CommentsQuery parameters = null)
 		{
-			return GetApiResultCollection<Comment, CommentsQuery>("comments/{ids}", CreateIdsVector(ids), parameters);
+			return GetApiResultCollection<Comment, CommentsQuery>(ApiEndpointEnum.CommentsByIds, CreateIdsVector(ids), parameters);
 		}
 
 		/// <summary>
@@ -230,7 +230,7 @@ namespace BridgeStack
 		/// <returns>Returns the various error codes that can be produced by the API.</returns>
 		public override IBridgeResponseCollection<ApiException> GetErrors(SimpleQuery parameters = null)
 		{
-			return GetApiResultCollection<ApiException, SimpleQuery>("errors", parameters);
+			return GetApiResultCollection<ApiException, SimpleQuery>(ApiEndpointEnum.Errors, parameters);
 		}
 
 		/// <summary>
@@ -243,7 +243,7 @@ namespace BridgeStack
 		/// <returns>This method allows you to generate an error.</returns>
 		public override IBridgeResponseItem<ApiException> SimulateError(int id, SiteQuery parameters = null)
 		{
-			return GetApiResultItem<ApiException, SiteQuery>("errors/{id}", CreateIdVector(id), parameters);
+			return GetApiResultItem<ApiException, SiteQuery>(ApiEndpointEnum.SimulateError, CreateIdVector(id), parameters);
 		}
 
 		/// <summary>
@@ -255,7 +255,7 @@ namespace BridgeStack
 		/// <returns>Returns all the posts (questions and answers) in the system.</returns>
 		public override IBridgeResponseCollection<Post> GetPosts(PostsQuery parameters = null)
 		{
-			return GetApiResultCollection<Post, PostsQuery>("posts", parameters);
+			return GetApiResultCollection<Post, PostsQuery>(ApiEndpointEnum.Posts, parameters);
 		}
 
 		/// <summary>
@@ -268,7 +268,7 @@ namespace BridgeStack
 		/// <returns>Returns the set of posts (questions and answers) identified by <paramref name="ids"/>.</returns>
 		public override IBridgeResponseCollection<Post> GetPosts(long[] ids, PostsQuery parameters = null)
 		{
-			return GetApiResultCollection<Post, PostsQuery>("posts/{ids}", CreateIdsVector(ids), parameters);
+			return GetApiResultCollection<Post, PostsQuery>(ApiEndpointEnum.PostsByIds, CreateIdsVector(ids), parameters);
 		}
 
 		/// <summary>
@@ -281,7 +281,7 @@ namespace BridgeStack
 		/// <returns>Returns the comments on the posts identified by <paramref name="ids"/>, regardless of the type of the posts.</returns>
 		public override IBridgeResponseCollection<Comment> GetPostsComments(long[] ids, CommentsQuery parameters = null)
 		{
-			return GetApiResultCollection<Comment, CommentsQuery>("posts/{ids}/comments", CreateIdsVector(ids), parameters);
+			return GetApiResultCollection<Comment, CommentsQuery>(ApiEndpointEnum.CommentsOnPosts, CreateIdsVector(ids), parameters);
 		}
 
 		/// <summary>
@@ -294,7 +294,7 @@ namespace BridgeStack
 		/// <returns>Returns the edit revisions on the posts identified by <paramref name="ids"/>, regardless of the type of the posts.</returns>
 		public override IBridgeResponseCollection<Revision> GetPostsRevisions(long[] ids, RangedQuery parameters = null)
 		{
-			return GetApiResultCollection<Revision, RangedQuery>("posts/{ids}/revisions", CreateIdsVector(ids), parameters);
+			return GetApiResultCollection<Revision, RangedQuery>(ApiEndpointEnum.RevisionsByIds, CreateIdsVector(ids), parameters);
 		}
 
 		/// <summary>
@@ -307,7 +307,7 @@ namespace BridgeStack
 		/// <returns>Returns the suggested edits on the posts identified by <paramref name="ids"/>, regardless of the type of the posts.</returns>
 		public override IBridgeResponseCollection<SuggestedEdit> GetPostsSuggestedEdits(long[] ids, SuggestedEditsQuery parameters = null)
 		{
-			return GetApiResultCollection<SuggestedEdit, SuggestedEditsQuery>("posts/{ids}/suggested-edits", CreateIdsVector(ids), parameters);
+			return GetApiResultCollection<SuggestedEdit, SuggestedEditsQuery>(ApiEndpointEnum.PostsOnSuggestedEdits, CreateIdsVector(ids), parameters);
 		}
 
 		/// <summary>
@@ -371,7 +371,7 @@ namespace BridgeStack
 		/// <returns>Returns the privileges that can be earned on a site.</returns>
 		public override IBridgeResponseCollection<Privilege> GetPrivileges(SimpleQuery parameters = null)
 		{
-			return GetApiResultCollection<Privilege, SimpleQuery>("privileges", parameters);
+			return GetApiResultCollection<Privilege, SimpleQuery>(ApiEndpointEnum.Privileges, parameters);
 		}
 
 		/// <summary>
@@ -383,7 +383,7 @@ namespace BridgeStack
 		/// <returns>Returns all the questions in the system.</returns>
 		public override IBridgeResponseCollection<Question> GetQuestions(QuestionsQuery parameters = null)
 		{
-			return GetApiResultCollection<Question, QuestionsQuery>("questions", parameters);
+			return GetApiResultCollection<Question, QuestionsQuery>(ApiEndpointEnum.Questions, parameters);
 		}
 
 		/// <summary>
@@ -396,7 +396,7 @@ namespace BridgeStack
 		/// <returns>Returns the set of questions identified by <paramref name="ids"/>.</returns>
 		public override IBridgeResponseCollection<Question> GetQuestions(long[] ids, PostsQuery parameters = null)
 		{
-			return GetApiResultCollection<Question, PostsQuery>("questions/{ids}", CreateIdsVector(ids), parameters);
+			return GetApiResultCollection<Question, PostsQuery>(ApiEndpointEnum.QuestionsByIds, CreateIdsVector(ids), parameters);
 		}
 
 		/// <summary>
@@ -409,7 +409,7 @@ namespace BridgeStack
 		/// <returns>Returns the answers on the questions identified by <paramref name="ids"/>.</returns>
 		public override IBridgeResponseCollection<Answer> GetQuestionsAnswers(long[] ids, PostsQuery parameters = null)
 		{
-			return GetApiResultCollection<Answer, PostsQuery>("questions/{ids}/answers", CreateIdsVector(ids), parameters);
+			return GetApiResultCollection<Answer, PostsQuery>(ApiEndpointEnum.AnswersOnQuestions, CreateIdsVector(ids), parameters);
 		}
 
 		/// <summary>
@@ -422,7 +422,7 @@ namespace BridgeStack
 		/// <returns>Returns the comments on the questions identified by <paramref name="ids"/>.</returns>
 		public override IBridgeResponseCollection<Comment> GetQuestionsComments(long[] ids, CommentsQuery parameters = null)
 		{
-			return GetApiResultCollection<Comment, CommentsQuery>("questions/{ids}/comments", CreateIdsVector(ids), parameters);
+			return GetApiResultCollection<Comment, CommentsQuery>(ApiEndpointEnum.CommentsOnQuestions, CreateIdsVector(ids), parameters);
 		}
 
 		/// <summary>
@@ -435,7 +435,7 @@ namespace BridgeStack
 		/// <returns>Returns the questions which link to those identified by <paramref name="ids"/>.</returns>
 		public override IBridgeResponseCollection<Question> GetQuestionsLinked(long[] ids, QuestionsRelatedQuery parameters = null)
 		{
-			return GetApiResultCollection<Question, QuestionsRelatedQuery>("questions/{ids}/linked", CreateIdsVector(ids), parameters);
+			return GetApiResultCollection<Question, QuestionsRelatedQuery>(ApiEndpointEnum.LinkedQuestions, CreateIdsVector(ids), parameters);
 		}
 
 		/// <summary>
@@ -448,7 +448,7 @@ namespace BridgeStack
 		/// <returns>Returns questions that the site considers related to those identified by <paramref name="ids"/>.</returns>
 		public override IBridgeResponseCollection<Question> GetQuestionsRelated(long[] ids, QuestionsRelatedQuery parameters = null)
 		{
-			return GetApiResultCollection<Question, QuestionsRelatedQuery>("questions/{ids}/related", CreateIdsVector(ids), parameters);
+			return GetApiResultCollection<Question, QuestionsRelatedQuery>(ApiEndpointEnum.RelatedQuestions, CreateIdsVector(ids), parameters);
 		}
 
 		/// <summary>
@@ -461,7 +461,7 @@ namespace BridgeStack
 		/// <returns>Returns the timeline for questions identified by <paramref name="ids"/>.</returns>
 		public override IBridgeResponseCollection<QuestionTimeline> GetQuestionsTimeline(long[] ids, RangedQuery parameters = null)
 		{
-			return GetApiResultCollection<QuestionTimeline, RangedQuery>("questions/{ids}/timeline", CreateIdsVector(ids), parameters);
+			return GetApiResultCollection<QuestionTimeline, RangedQuery>(ApiEndpointEnum.QuestionsTimeline, CreateIdsVector(ids), parameters);
 		}
 
 		/// <summary>
@@ -473,7 +473,7 @@ namespace BridgeStack
 		/// <returns>Returns questions the site considers to be unanswered.</returns>
 		public override IBridgeResponseCollection<Question> GetQuestionsConsideredUnanswered(PostsQuery parameters = null)
 		{
-			return GetApiResultCollection<Question, PostsQuery>("questions/unanswered", parameters);
+			return GetApiResultCollection<Question, PostsQuery>(ApiEndpointEnum.UnansweredQuestions, parameters);
 		}
 
 		/// <summary>
@@ -485,7 +485,7 @@ namespace BridgeStack
 		/// <returns>Returns questions which have received no answers.</returns>
 		public override IBridgeResponseCollection<Question> GetQuestionsWithNoAnswers(PostsQuery parameters = null)
 		{
-			return GetApiResultCollection<Question, PostsQuery>("questions/no-answers", parameters);
+			return GetApiResultCollection<Question, PostsQuery>(ApiEndpointEnum.NoAnswerQuestions, parameters);
 		}
 
 		/// <summary>
@@ -576,7 +576,7 @@ namespace BridgeStack
 		/// <returns>Returns edit revisions identified by <paramref name="guids"/>.</returns>
 		public override IBridgeResponseCollection<Revision> GetRevisions(Guid[] guids, RangedQuery parameters = null)
 		{
-			return GetApiResultCollection<Revision, RangedQuery>("revisions/{ids}", CreateIdsVector(guids), parameters);
+			return GetApiResultCollection<Revision, RangedQuery>(ApiEndpointEnum.RevisionsByGuids, CreateIdsVector(guids), parameters);
 		}
 
 		/// <summary>
@@ -601,7 +601,7 @@ namespace BridgeStack
 		/// <returns>Returns any questions which satisfy a search criteria.</returns>
 		public override IBridgeResponseCollection<Question> Search(SearchQuery parameters = null)
 		{
-			return GetApiResultCollection<Question, SearchQuery>("search", parameters);
+			return GetApiResultCollection<Question, SearchQuery>(ApiEndpointEnum.Search, parameters);
 		}
 
 		/// <summary>
@@ -613,7 +613,7 @@ namespace BridgeStack
 		/// <returns>Returns questions which are similar to a hypothetical one based on a title and tag combination.</returns>
 		public override IBridgeResponseCollection<Question> Similar(SearchSimilarQuery parameters = null)
 		{
-			return GetApiResultCollection<Question, SearchSimilarQuery>("similar", parameters);
+			return GetApiResultCollection<Question, SearchSimilarQuery>(ApiEndpointEnum.Similar, parameters);
 		}
 
 		/// <summary>
@@ -625,7 +625,7 @@ namespace BridgeStack
 		/// <returns>Returns all the suggested edits in the system.</returns>
 		public override IBridgeResponseCollection<SuggestedEdit> GetSuggestedEdits(SuggestedEditsQuery parameters = null)
 		{
-			return GetApiResultCollection<SuggestedEdit, SuggestedEditsQuery>("suggested-edits", parameters);
+			return GetApiResultCollection<SuggestedEdit, SuggestedEditsQuery>(ApiEndpointEnum.SuggestedEdits, parameters);
 		}
 
 		/// <summary>
@@ -638,7 +638,7 @@ namespace BridgeStack
 		/// <returns>Returns the set of suggested edits identified by <paramref name="ids"/>.</returns>
 		public override IBridgeResponseCollection<SuggestedEdit> GetSuggestedEdits(long[] ids, SuggestedEditsQuery parameters = null)
 		{
-			return GetApiResultCollection<SuggestedEdit, SuggestedEditsQuery>("suggested-edits/{ids}", CreateIdsVector(ids), parameters);
+			return GetApiResultCollection<SuggestedEdit, SuggestedEditsQuery>(ApiEndpointEnum.SuggestedEditsByIds, CreateIdsVector(ids), parameters);
 		}
 
 		/// <summary>
@@ -663,7 +663,7 @@ namespace BridgeStack
 		/// <returns>Returns a collection of statistics about the site.</returns>
 		public override IBridgeResponseItem<NetworkSiteStats> GetInfo(SiteQuery parameters = null)
 		{
-			return GetApiResultItem<NetworkSiteStats, SiteQuery>("info", parameters);
+			return GetApiResultItem<NetworkSiteStats, SiteQuery>(ApiEndpointEnum.Info, parameters);
 		}
 
 		/// <summary>
@@ -675,7 +675,7 @@ namespace BridgeStack
 		/// <returns>Returns all the tags found on a site.</returns>
 		public override IBridgeResponseCollection<Tag> GetTags(TagsQuery parameters = null)
 		{
-			return GetApiResultCollection<Tag, TagsQuery>("tags", parameters);
+			return GetApiResultCollection<Tag, TagsQuery>(ApiEndpointEnum.Tags, parameters);
 		}
 
 		/// <summary>
@@ -687,7 +687,7 @@ namespace BridgeStack
 		/// <returns>Returns all tag synonyms found a site.</returns>
 		public override IBridgeResponseCollection<TagSynonym> GetTagSynonyms(TagSynonymsQuery parameters = null)
 		{
-			return GetApiResultCollection<TagSynonym, TagSynonymsQuery>("tags/synonyms", parameters);
+			return GetApiResultCollection<TagSynonym, TagSynonymsQuery>(ApiEndpointEnum.TagSynonyms, parameters);
 		}
 
 		/// <summary>
@@ -700,7 +700,7 @@ namespace BridgeStack
 		/// <returns>Returns the frequently asked questions for the given set of tags in <paramref name="tags"/>.</returns>
 		public override IBridgeResponseCollection<Question> GetTagsFrequentlyAskedQuestions(string[] tags, SimpleQuery parameters = null)
 		{
-			return GetApiResultCollection<Question, SimpleQuery>("tags/{tags}/faq", CreateTagsVector(tags), parameters);
+			return GetApiResultCollection<Question, SimpleQuery>(ApiEndpointEnum.FAQ, CreateTagsVector(tags), parameters);
 		}
 
 		/// <summary>
@@ -713,7 +713,7 @@ namespace BridgeStack
 		/// <returns>Returns the tags that are most related to those in <paramref name="tags"/>.</returns>
 		public override IBridgeResponseCollection<Tag> GetTagsRelated(string[] tags, SimpleQuery parameters = null)
 		{
-			return GetApiResultCollection<Tag, SimpleQuery>("tags/{tags}/related", CreateTagsVector(tags), parameters);
+			return GetApiResultCollection<Tag, SimpleQuery>(ApiEndpointEnum.RelatedTags, CreateTagsVector(tags), parameters);
 		}
 
 		/// <summary>
@@ -726,7 +726,7 @@ namespace BridgeStack
 		/// <returns>Returns the tags synonyms for the given set of tags in <paramref name="tags"/>.</returns>
 		public override IBridgeResponseCollection<TagSynonym> GetTagsSynonyms(string[] tags, TagSynonymsQuery parameters = null)
 		{
-			return GetApiResultCollection<TagSynonym, TagSynonymsQuery>("tags/{tags}/synonyms", CreateTagsVector(tags), parameters);
+			return GetApiResultCollection<TagSynonym, TagSynonymsQuery>(ApiEndpointEnum.SynonymsByTags, CreateTagsVector(tags), parameters);
 		}
 
 		/// <summary>
@@ -741,7 +741,7 @@ namespace BridgeStack
 		public override IBridgeResponseCollection<TagScore> GetTagTopAnswerers(string tag, QueryPeriodEnum period, TagScoresQuery parameters = null)
 		{
 			IRequestVector[] vectors = new[] { CreateTagVector(tag), CreateEnumVector("{period}", period) };
-			return GetApiResultCollection<TagScore, TagScoresQuery>("tags/{tag}/top-answerers/{period}", vectors, parameters);
+			return GetApiResultCollection<TagScore, TagScoresQuery>(ApiEndpointEnum.TopAnswerersOnTags, vectors, parameters);
 		}
 
 		/// <summary>
@@ -756,7 +756,7 @@ namespace BridgeStack
 		public override IBridgeResponseCollection<TagScore> GetTagTopAskers(string tag, QueryPeriodEnum period, TagScoresQuery parameters = null)
 		{
 			IRequestVector[] vectors = new[] { CreateTagVector(tag), CreateEnumVector("{period}", period) };
-			return GetApiResultCollection<TagScore, TagScoresQuery>("tags/{tag}/top-askers/{period}", vectors, parameters);
+			return GetApiResultCollection<TagScore, TagScoresQuery>(ApiEndpointEnum.TopAskersOnTags, vectors, parameters);
 		}
 
 		/// <summary>
@@ -769,7 +769,7 @@ namespace BridgeStack
 		/// <returns>Returns the wikis that go with the given set of tags in {tags}.</returns>
 		public override IBridgeResponseCollection<TagWiki> GetTagsWikis(string[] tags, SimpleQuery parameters = null)
 		{
-			return GetApiResultCollection<TagWiki, SimpleQuery>("tags/{tags}/wikis", CreateTagsVector(tags), parameters);
+			return GetApiResultCollection<TagWiki, SimpleQuery>(ApiEndpointEnum.WikisByTags, CreateTagsVector(tags), parameters);
 		}
 
 		/// <summary>
@@ -833,7 +833,7 @@ namespace BridgeStack
 		/// <returns>Returns all the users in the system.</returns>
 		public override IBridgeResponseCollection<User> GetUsers(UsersNamedQuery parameters = null)
 		{
-			return GetApiResultCollection<User, UsersNamedQuery>("users", parameters);
+			return GetApiResultCollection<User, UsersNamedQuery>(ApiEndpointEnum.Users, parameters);
 		}
 
 		/// <summary>
@@ -846,7 +846,7 @@ namespace BridgeStack
 		/// <returns>Returns the set of users identified by <paramref name="ids"/>.</returns>
 		public override IBridgeResponseCollection<User> GetUsers(long[] ids, UsersQuery parameters = null)
 		{
-			return GetApiResultCollection<User, UsersQuery>("users/{ids}", CreateIdsVector(ids), parameters);
+			return GetApiResultCollection<User, UsersQuery>(ApiEndpointEnum.UsersByIds, CreateIdsVector(ids), parameters);
 		}
 
 		/// <summary>
@@ -859,7 +859,7 @@ namespace BridgeStack
 		/// <returns>Returns the answers the users identified by <paramref name="ids"/> posted.</returns>
 		public override IBridgeResponseCollection<Answer> GetUsersAnswers(long[] ids, PostsQuery parameters = null)
 		{
-			return GetApiResultCollection<Answer, PostsQuery>("users/{ids}/answers", CreateIdsVector(ids), parameters);
+			return GetApiResultCollection<Answer, PostsQuery>(ApiEndpointEnum.AnswersOnUsers, CreateIdsVector(ids), parameters);
 		}
 
 		/// <summary>
@@ -872,7 +872,7 @@ namespace BridgeStack
 		/// <returns>Returns the badges the users identified by <paramref name="ids"/> earned.</returns>
 		public override IBridgeResponseCollection<Badge> GetUsersBadges(long[] ids, BadgesOnUserQuery parameters = null)
 		{
-			return GetApiResultCollection<Badge, BadgesOnUserQuery>("users/{ids}/badges", CreateIdsVector(ids), parameters);
+			return GetApiResultCollection<Badge, BadgesOnUserQuery>(ApiEndpointEnum.BadgesOnUsers, CreateIdsVector(ids), parameters);
 		}
 
 		/// <summary>
@@ -885,7 +885,7 @@ namespace BridgeStack
 		/// <returns>Returns the comments the users identified by <paramref name="ids"/> posted.</returns>
 		public override IBridgeResponseCollection<Comment> GetUsersComments(long[] ids, CommentsQuery parameters = null)
 		{
-			return GetApiResultCollection<Comment, CommentsQuery>("users/{ids}/comments", CreateIdsVector(ids), parameters);
+			return GetApiResultCollection<Comment, CommentsQuery>(ApiEndpointEnum.CommentsOnUsers, CreateIdsVector(ids), parameters);
 		}
 
 		/// <summary>
@@ -900,7 +900,7 @@ namespace BridgeStack
 		public override IBridgeResponseCollection<Comment> GetUsersCommentsInReplyTo(long[] ids, long toId, CommentsQuery parameters = null)
 		{
 			IRequestVector[] vectors = new[] { CreateIdsVector(ids), CreateNamedVector("{toid}", new[] { toId }) };
-			return GetApiResultCollection<Comment, CommentsQuery>("users/{ids}/comments/{toid}", vectors, parameters);
+			return GetApiResultCollection<Comment, CommentsQuery>(ApiEndpointEnum.CommentsByUsersToUser, vectors, parameters);
 		}
 
 		/// <summary>
@@ -913,7 +913,7 @@ namespace BridgeStack
 		/// <returns>Returns the questions the users identified by <paramref name="ids"/> favorited.</returns>
 		public override IBridgeResponseCollection<Question> GetUsersQuestionFavorites(long[] ids, QuestionFavoritesQuery parameters = null)
 		{
-			return GetApiResultCollection<Question, QuestionFavoritesQuery>("users/{ids}/favorites", CreateIdsVector(ids), parameters);
+			return GetApiResultCollection<Question, QuestionFavoritesQuery>(ApiEndpointEnum.FavoritesOnUsers, CreateIdsVector(ids), parameters);
 		}
 
 		/// <summary>
@@ -926,7 +926,7 @@ namespace BridgeStack
 		/// <returns>Returns the comments the users identified by <paramref name="ids"/> were mentioned in.</returns>
 		public override IBridgeResponseCollection<Comment> GetUsersMentions(long[] ids, CommentsQuery parameters = null)
 		{
-			return GetApiResultCollection<Comment, CommentsQuery>("users/{ids}/mentioned", CreateIdsVector(ids), parameters);
+			return GetApiResultCollection<Comment, CommentsQuery>(ApiEndpointEnum.MentionsOnUsers, CreateIdsVector(ids), parameters);
 		}
 
 		/// <summary>
@@ -939,7 +939,7 @@ namespace BridgeStack
 		/// <returns>Returns the privileges the user identified by <paramref name="id"/> has.</returns>
 		public override IBridgeResponseCollection<Privilege> GetUserPrivileges(long id, SimpleQuery parameters = null)
 		{
-			return GetApiResultCollection<Privilege, SimpleQuery>("users/{id}/privileges", CreateIdVector(id), parameters);
+			return GetApiResultCollection<Privilege, SimpleQuery>(ApiEndpointEnum.PrivilegesOnUsers, CreateIdVector(id), parameters);
 		}
 
 		/// <summary>
@@ -952,7 +952,7 @@ namespace BridgeStack
 		/// <returns>Returns the questions the users identified by <paramref name="ids"/> asked.</returns>
 		public override IBridgeResponseCollection<Question> GetUsersQuestions(long[] ids, PostsQuery parameters = null)
 		{
-			return GetApiResultCollection<Question, PostsQuery>("users/{ids}/questions", CreateIdsVector(ids), parameters);
+			return GetApiResultCollection<Question, PostsQuery>(ApiEndpointEnum.QuestionsOnUsers, CreateIdsVector(ids), parameters);
 		}
 
 		/// <summary>
@@ -965,7 +965,7 @@ namespace BridgeStack
 		/// <returns>Returns the questions the users identified by <paramref name="ids"/> asked, which have no answers.</returns>
 		public override IBridgeResponseCollection<Question> GetUsersQuestionsWithNoAnswers(long[] ids, PostsQuery parameters = null)
 		{
-			return GetApiResultCollection<Question, PostsQuery>("users/{ids}/questions/no-answers", CreateIdsVector(ids), parameters);
+			return GetApiResultCollection<Question, PostsQuery>(ApiEndpointEnum.NoAnswerQuestionsOnUsers, CreateIdsVector(ids), parameters);
 		}
 
 		/// <summary>
@@ -978,7 +978,7 @@ namespace BridgeStack
 		/// <returns>Returns the questions the users identified by <paramref name="ids"/> asked, which have at least one answer, but no accepted answer.</returns>
 		public override IBridgeResponseCollection<Question> GetUsersQuestionsWithNoAcceptedAnswer(long[] ids, PostsQuery parameters = null)
 		{
-			return GetApiResultCollection<Question, PostsQuery>("users/{ids}/questions/unaccepted", CreateIdsVector(ids), parameters);
+			return GetApiResultCollection<Question, PostsQuery>(ApiEndpointEnum.UnacceptedQuestionsOnUsers, CreateIdsVector(ids), parameters);
 		}
 
 		/// <summary>
@@ -991,7 +991,7 @@ namespace BridgeStack
 		/// <returns>Returns the questions the users identified by <paramref name="ids"/> asked, which the site consideres unanswered, while still having at least one answer posted.</returns>
 		public override IBridgeResponseCollection<Question> GetUsersQuestionsConsideredUnanswered(long[] ids, PostsQuery parameters = null)
 		{
-			return GetApiResultCollection<Question, PostsQuery>("users/{ids}/questions/unanswered", CreateIdsVector(ids), parameters);
+			return GetApiResultCollection<Question, PostsQuery>(ApiEndpointEnum.UnansweredQuestionsOnUsers, CreateIdsVector(ids), parameters);
 		}
 
 		/// <summary>
@@ -1004,7 +1004,7 @@ namespace BridgeStack
 		/// <returns>Returns the reputation changes for the users identified by <paramref name="ids"/>.</returns>
 		public override IBridgeResponseCollection<Reputation> GetUsersReputationChanges(long[] ids, RangedQuery parameters = null)
 		{
-			return GetApiResultCollection<Reputation, RangedQuery>("users/{ids}/reputation", CreateIdsVector(ids), parameters);
+			return GetApiResultCollection<Reputation, RangedQuery>(ApiEndpointEnum.ReputationOnUsers, CreateIdsVector(ids), parameters);
 		}
 
 		/// <summary>
@@ -1017,7 +1017,7 @@ namespace BridgeStack
 		/// <returns>Returns the suggested edits the users identified by <paramref name="ids"/> submitted.</returns>
 		public override IBridgeResponseCollection<SuggestedEdit> GetUsersSuggestedEdits(long[] ids, SuggestedEditsQuery parameters = null)
 		{
-			return GetApiResultCollection<SuggestedEdit, SuggestedEditsQuery>("users/{ids}/suggested-edits", CreateIdsVector(ids), parameters);
+			return GetApiResultCollection<SuggestedEdit, SuggestedEditsQuery>(ApiEndpointEnum.SuggestedEditsOnUsers, CreateIdsVector(ids), parameters);
 		}
 
 		/// <summary>
@@ -1030,7 +1030,7 @@ namespace BridgeStack
 		/// <returns>Returns the tags the users identified by <paramref name="ids"/> have been active in.</returns>
 		public override IBridgeResponseCollection<Tag> GetUsersActiveTags(long[] ids, TagsQuery parameters = null)
 		{
-			return GetApiResultCollection<Tag, TagsQuery>("users/{ids}/tags", CreateIdsVector(ids), parameters);
+			return GetApiResultCollection<Tag, TagsQuery>(ApiEndpointEnum.TagsOnUsers, CreateIdsVector(ids), parameters);
 		}
 
 		/// <summary>
@@ -1045,7 +1045,7 @@ namespace BridgeStack
 		public override IBridgeResponseCollection<Answer> GetUserTopAnswers(long id, string[] tags, PostsQuery parameters = null)
 		{
 			IRequestVector[] vectors = new[] { CreateIdVector(id), CreateTagsVector(tags) };
-			return GetApiResultCollection<Answer, PostsQuery>("users/{id}/tags/{tags}/top-answers", vectors, parameters);
+			return GetApiResultCollection<Answer, PostsQuery>(ApiEndpointEnum.TopUserAnswersInTags, vectors, parameters);
 		}
 
 		/// <summary>
@@ -1060,7 +1060,7 @@ namespace BridgeStack
 		public override IBridgeResponseCollection<Question> GetUserTopQuestions(long id, string[] tags, PostsQuery parameters = null)
 		{
 			IRequestVector[] vectors = new[] { CreateIdVector(id), CreateTagsVector(tags) };
-			return GetApiResultCollection<Question, PostsQuery>("users/{id}/tags/{tags}/top-questions", vectors, parameters);
+			return GetApiResultCollection<Question, PostsQuery>(ApiEndpointEnum.TopUserQuestionsInTags, vectors, parameters);
 		}
 
 		/// <summary>
@@ -1073,7 +1073,7 @@ namespace BridgeStack
 		/// <returns>Returns a subset of actions the users identified by <paramref name="ids"/> have taken on the system.</returns>
 		public override IBridgeResponseCollection<UserTimeline> GetUsersTimeline(long[] ids, RangedQuery parameters = null)
 		{
-			return GetApiResultCollection<UserTimeline, RangedQuery>("users/{ids}/timeline", CreateIdsVector(ids), parameters);
+			return GetApiResultCollection<UserTimeline, RangedQuery>(ApiEndpointEnum.TimelineOnUsers, CreateIdsVector(ids), parameters);
 		}
 
 		/// <summary>
@@ -1086,7 +1086,7 @@ namespace BridgeStack
 		/// <returns>Returns a single user's top 30 tags by answer score.</returns>
 		public override IBridgeResponseCollection<TagTop> GetUserTopAnswerTags(long id, SimpleQuery parameters = null)
 		{
-			return GetApiResultCollection<TagTop, SimpleQuery>("users/{id}/top-answer-tags", CreateIdVector(id), parameters);
+			return GetApiResultCollection<TagTop, SimpleQuery>(ApiEndpointEnum.TopAnswerTagsOnUsers, CreateIdVector(id), parameters);
 		}
 
 		/// <summary>
@@ -1099,7 +1099,7 @@ namespace BridgeStack
 		/// <returns>Returns a single user's top 30 tags by question score.</returns>
 		public override IBridgeResponseCollection<TagTop> GetUserTopQuestionTags(long id, SimpleQuery parameters = null)
 		{
-			return GetApiResultCollection<TagTop, SimpleQuery>("users/{id}/top-question-tags", CreateIdVector(id), parameters);
+			return GetApiResultCollection<TagTop, SimpleQuery>(ApiEndpointEnum.TopQuestionTagsOnUsers, CreateIdVector(id), parameters);
 		}
 
 		/// <summary>
@@ -1111,7 +1111,7 @@ namespace BridgeStack
 		/// <returns>Gets those users on a system who can exercise moderation powers.</returns>
 		public override IBridgeResponseCollection<User> GetModerators(UsersQuery parameters = null)
 		{
-			return GetApiResultCollection<User, UsersQuery>("users/moderators", parameters);
+			return GetApiResultCollection<User, UsersQuery>(ApiEndpointEnum.Moderators, parameters);
 		}
 
 		/// <summary>
@@ -1123,7 +1123,7 @@ namespace BridgeStack
 		/// <returns>Returns those users on a site who both have moderator powers, and were actually elected.</returns>
 		public override IBridgeResponseCollection<User> GetModeratorsElected(UsersQuery parameters = null)
 		{
-			return GetApiResultCollection<User, UsersQuery>("users/moderators/elected", parameters);
+			return GetApiResultCollection<User, UsersQuery>(ApiEndpointEnum.ElectedModerators, parameters);
 		}
 
 		/// <summary>
@@ -1136,7 +1136,7 @@ namespace BridgeStack
 		/// <returns>Returns all of a user's associated accounts for a set of users identified by <paramref name="ids"/>.</returns>
 		public override IBridgeResponseCollection<NetworkUser> GetUsersAssociatedAccounts(long[] ids, SimpleQuery parameters = null)
 		{
-			return GetApiResultCollection<NetworkUser, SimpleQuery>("users/{ids}/associated", CreateIdsVector(ids), parameters);
+			return GetApiResultCollection<NetworkUser, SimpleQuery>(ApiEndpointEnum.AssociatedUsers, CreateIdsVector(ids), parameters);
 		}
 
 		/// <summary>
@@ -1357,7 +1357,7 @@ namespace BridgeStack
 		/// <returns>Immediately expires the access tokens passed. This method is meant to allow an application to discard any active access tokens it no longer needs.</returns>
 		public override IBridgeResponseCollection<AccessToken> AccessTokensInvalidate(string[] tokens)
 		{
-			return GetApiResultCollection<AccessToken, NullQuery>("access-tokens/{accessTokens}/invalidate", CreateNamedVector("{accessTokens}", tokens), null);
+			return GetApiResultCollection<AccessToken, NullQuery>(ApiEndpointEnum.InvalidateAccessTokens, CreateNamedVector("{accessTokens}", tokens), null);
 		}
 
 		/// <summary>
@@ -1369,7 +1369,7 @@ namespace BridgeStack
 		/// <returns>Returns the properties for a set of access tokens.</returns>
 		public override IBridgeResponseCollection<AccessToken> AccessTokensRead(string[] tokens)
 		{
-			return GetApiResultCollection<AccessToken, NullQuery>("access-tokens/{accessTokens}/read", CreateNamedVector("{accessTokens}", tokens), null);
+			return GetApiResultCollection<AccessToken, NullQuery>(ApiEndpointEnum.ReadAccessTokens, CreateNamedVector("{accessTokens}", tokens), null);
 		}
 
 		/// <summary>
@@ -1381,7 +1381,7 @@ namespace BridgeStack
 		/// <returns>This method is meant for uninstalling applications, recovering from access_token leaks, or simply as a stronger form of <see cref="IStackClient.AccessTokenInvalidate"/>.</returns>
 		public override IBridgeResponseCollection<AccessToken> AccessTokensDeauthenticate(string[] tokens)
 		{
-			return GetApiResultCollection<AccessToken, NullQuery>("access-tokens/{accessTokens}/de-authenticate", CreateNamedVector("{accessTokens}", tokens), null);
+			return GetApiResultCollection<AccessToken, NullQuery>(ApiEndpointEnum.ApplicationDeauthenticate, CreateNamedVector("{accessTokens}", tokens), null);
 		}
 
 		/// <summary>
@@ -1429,7 +1429,7 @@ namespace BridgeStack
 		/// <returns>Creates a new filter given a list of includes, excludes, a base filter, and whether or not this filter should be "unsafe".</returns>
 		public override IBridgeResponseItem<Filter> CreateNetworkFilter(CreateFilterQuery parameters = null)
 		{
-			return GetApiResultItem<Filter, CreateFilterQuery>("filter/create", parameters);
+			return GetApiResultItem<Filter, CreateFilterQuery>(ApiEndpointEnum.FilterCreate, parameters);
 		}
 
 		/// <summary>
@@ -1441,7 +1441,7 @@ namespace BridgeStack
 		/// <returns>Returns the fields included by the filters identified by <paramref name="ids"/>, and the "safeness" of those filters.</returns>
 		public override IBridgeResponseCollection<Filter> GetNetworkFilters(string[] ids)
 		{
-			return GetApiResultCollection<Filter, NullQuery>("filter/{filters}/read", CreateNamedVector("{filters}", ids), null);
+			return GetApiResultCollection<Filter, NullQuery>(ApiEndpointEnum.ReadFilter, CreateNamedVector("{filters}", ids), null);
 		}
 
 		/// <summary>
@@ -1465,7 +1465,7 @@ namespace BridgeStack
 		/// <returns>Returns all sites in the network.</returns>
 		public override IBridgeResponseCollection<NetworkSite> GetNetworkSites(SimpleQuery parameters = null)
 		{
-			return GetApiResultCollection<NetworkSite, SimpleQuery>("sites", parameters);
+			return GetApiResultCollection<NetworkSite, SimpleQuery>(ApiEndpointEnum.Sites, parameters);
 		}
 
 		#endregion
