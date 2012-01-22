@@ -46,6 +46,8 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="DataContracts\ApiEndpointBuilder\ApiMethodEnum.cs" />
+    <Compile Include="Attributes\CacheLifeSpanAttribute.cs" />
+    <Compile Include="Extensions\ApiMethodEnum.cs" />
     <Compile Include="Extensions\Enum.cs" />
     <Compile Include="RequestHandler\ResponseCacheItem.cs" />
     <Compile Include="RequestHandler\ResponseCache.cs" />
@@ -53,12 +55,12 @@
     <Compile Include="DataContracts\EventLog\EventSeverityEnum.cs" />
     <Compile Include="DataContracts\EventLog\IEventLog.cs" />
     <Compile Include="Extensions\IBridgeResponseCollection.cs" />
-    <Compile Include="EventLog\EventLog.cs" />
+    <Compile Include="Entity\EventLog\EventLog.cs" />
     <Compile Include="DataContracts\RequestHandler\CacheItemStateEnum.cs" />
     <Compile Include="DataContracts\EventLog\IEventLoggedArgs.cs" />
-    <Compile Include="DataContracts\Clients\IStackClientPlugin.cs" />
-    <Compile Include="EventLog\OnEventLogged.cs" />
-    <Compile Include="EventLog\OnEventLoggedArgs.cs" />
+    <Compile Include="DataContracts\Client\IStackClientPlugin.cs" />
+    <Compile Include="Entity\EventLog\OnEventLogged.cs" />
+    <Compile Include="Entity\EventLog\OnEventLoggedArgs.cs" />
     <Compile Include="Resources\Events.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -100,11 +102,11 @@
     <Compile Include="Extensions\UnixDateTime.cs" />
     <Compile Include="Helpers\UnixTimeSpanConverter.cs" />
     <Compile Include="Extensions\UnixTimeSpan.cs" />
-    <Compile Include="DataContracts\Clients\IAuthorizedStackClient.cs" />
+    <Compile Include="DataContracts\Client\IAuthorizedStackClient.cs" />
     <Compile Include="DataContracts\IBridgeResponseData.cs" />
-    <Compile Include="DataContracts\Clients\IOAuthScope.cs" />
-    <Compile Include="DataContracts\Clients\IOAuthState.cs" />
-    <Compile Include="DataContracts\Clients\IDefaults.cs" />
+    <Compile Include="DataContracts\Client\IOAuthScope.cs" />
+    <Compile Include="DataContracts\Client\IOAuthState.cs" />
+    <Compile Include="DataContracts\Client\IDefaults.cs" />
     <Compile Include="OAuthClient\OAuthState.cs" />
     <Compile Include="StackClient\Defaults.cs" />
     <Compile Include="OAuthClient\OAuthScope.cs" />
@@ -226,7 +228,7 @@
     <Compile Include="Entity\QueryParameters\Basic\SiteQuery.cs" />
     <Compile Include="Entity\QueryParameters\Specialized\SuggestedEditsQuery.cs" />
     <Compile Include="OAuthClient\OAuthClientFactory.cs" />
-    <Compile Include="DataContracts\Clients\IOAuthClient.cs" />
+    <Compile Include="DataContracts\Client\IOAuthClient.cs" />
     <Compile Include="OAuthClient\OAuthClient.cs" />
     <Compile Include="DataContracts\RequestHandler\IResponseCache.cs" />
     <Compile Include="DataContracts\RequestHandler\IResponseCacheItem.cs" />
@@ -247,7 +249,7 @@
     </Compile>
     <Compile Include="RequestHandler\RequestThrottler.cs" />
     <Compile Include="StackClient\StackClient.cs" />
-    <Compile Include="DataContracts\Clients\IStackClient.cs" />
+    <Compile Include="DataContracts\Client\IStackClient.cs" />
     <Compile Include="StackClient\StackClientBase.cs" />
     <Compile Include="StackClient\StackClientFactory.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

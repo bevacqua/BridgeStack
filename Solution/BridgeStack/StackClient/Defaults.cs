@@ -1,3 +1,6 @@
+using System;
+using System.Collections.Generic;
+
 namespace BridgeStack
 {
 	/// <summary>
@@ -21,8 +24,21 @@ namespace BridgeStack
 		public string Site { get; set; }
 
 		/// <summary>
+		/// Dictionary of cache life span default value user-defined overrides.
+		/// </summary>
+		public IDictionary<ApiMethodEnum, TimeSpan> CacheLifeSpan { get; private set; }
+
+		/// <summary>
 		/// The parent <see cref="IStackClient"/>.
 		/// </summary>
 		public IStackClient Client { get; set; }
+
+		/// <summary>
+		/// Initializes the Defaults object.
+		/// </summary>
+		public Defaults()
+		{
+			CacheLifeSpan = new Dictionary<ApiMethodEnum, TimeSpan>();
+		}
 	}
 }

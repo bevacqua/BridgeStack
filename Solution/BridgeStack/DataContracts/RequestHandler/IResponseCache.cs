@@ -1,3 +1,5 @@
+using System;
+
 namespace BridgeStack
 {
 	/// <summary>
@@ -23,5 +25,11 @@ namespace BridgeStack
 		/// <param name="response">The API response.</param>
 		/// <returns>True if the operation was successful, false otherwise.</returns>
 		bool Push<T>(IApiEndpointBuilder builder, IApiResponse<T> response) where T : class;
+		/// <summary>
+		/// Gets the life span for cache items based on the provided instance of <see cref="IApiEndpointBuilder"/>.
+		/// </summary>
+		/// <param name="builder">The object that builds the API route endpoint.</param>
+		/// <returns>The life span duration after which a cache item is no longer considered fresh.</returns>
+		TimeSpan? GetCacheLifeSpan(IApiEndpointBuilder builder);
 	}
 }

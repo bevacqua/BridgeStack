@@ -1,3 +1,6 @@
+using System;
+using System.Collections.Generic;
+
 namespace BridgeStack
 {
 	/// <summary>
@@ -17,5 +20,9 @@ namespace BridgeStack
 		/// Default target network site for all requests.
 		/// </summary>
 		string Site { get; set; }
+		/// <summary>
+		/// Dictionary of cache life span default value user-defined overrides.
+		/// </summary>
+		IDictionary<ApiMethodEnum, TimeSpan> CacheLifeSpan { get; }
 	}
 }

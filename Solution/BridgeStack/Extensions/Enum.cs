@@ -11,16 +11,16 @@ namespace BridgeStack
 		/// <summary>
 		/// Checks for a <see cref="EnumMemberAttribute"/> decorating the value, and returns the actual string value for the provided member.
 		/// </summary>
-		/// <param name="enume">The enum member.</param>
+		/// <param name="member">The enum member.</param>
 		/// <returns>The actual enum string value.</returns>
-		public static string GetValue(this Enum enume)
+		public static string GetValue(this Enum member)
 		{
-			EnumMemberAttribute attribute = enume.GetCustomAttribute<EnumMemberAttribute>();
+			EnumMemberAttribute attribute = member.GetCustomAttribute<EnumMemberAttribute>();
 			if (attribute != null && !attribute.Value.NullOrEmpty())
 			{
 				return attribute.Value;
 			}
-			return Enum.GetName(enume.GetType(), enume);
+			return Enum.GetName(member.GetType(), member);
 		}
 	}
 }

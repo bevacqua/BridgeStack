@@ -1,4 +1,5 @@
-﻿using System.Runtime.Serialization;
+﻿using System;
+using System.Runtime.Serialization;
 
 namespace BridgeStack
 {
@@ -227,6 +228,7 @@ namespace BridgeStack
 		/// <summary>
 		/// https://api.stackexchange.com/docs/info
 		/// </summary>
+		[CacheLifeSpan(1)]
 		[EnumMember(Value = "info")]
 		Info,
 

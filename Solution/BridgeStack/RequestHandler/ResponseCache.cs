@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Concurrent;
 using System.Threading;
 
@@ -52,6 +53,10 @@ namespace BridgeStack
 		/// <returns>Returns an API response cache item if successful, null otherwise.</returns>
 		private IResponseCacheItem<T> Get<T>(IApiEndpointBuilder builder, bool pushEmpty, int retries) where T : class
 		{
+			if (builder == null)
+			{
+				throw new ArgumentNullException("builder");
+			}
 			string endpoint = builder.ToString();
 			IResponseCacheItem cacheItem;
 			if (Cache.TryGetValue(endpoint, out cacheItem))
@@ -89,6 +94,10 @@ namespace BridgeStack
 		/// <returns>True if the operation was successful, false otherwise.</returns>
 		public bool Push<T>(IApiEndpointBuilder builder, IApiResponse<T> response) where T : class
 		{
+			if (builder == null)
+			{
+				throw new ArgumentNullException("builder");
+			}
 			string endpoint = builder.ToString();
 			if (endpoint.NullOrEmpty())
 			{
@@ -97,14 +106,33 @@ namespace BridgeStack
 			IResponseCacheItem item;
 			if (Cache.TryGetValue(endpoint, out item))
 			{
-				((IResponseCacheItem<T>)item).UpdateResponse(response);
-				return true;
+				if (item is IResponseCacheItem<T>) // avoid raising exceptions when improperly invoked.
+				{
+					((IResponseCacheItem<T>)item).UpdateResponse(response);
+					return true;
+				}
+				return false;
 			}
 			else
 			{
-				item = new ResponseCacheItem<T>(response);
+				item = new ResponseCacheItem<T>(response, builder);
 				return Cache.TryAdd(endpoint, item);
 			}
+		}
+
+		/// <summary>
+		/// Gets the life span for cache items based on the provided instance of <see cref="IApiEndpointBuilder"/>.
+		/// </summary>
+		/// <param name="builder">The object that builds the API route endpoint.</param>
+		/// <returns>The life span duration after which a cache item is no longer considered fresh.</returns>
+		public TimeSpan? GetCacheLifeSpan(IApiEndpointBuilder builder)
+		{
+			if (builder == null)
+			{
+				throw new ArgumentNullException("builder");
+			}
+			ApiMethodEnum method = builder.ApiMethod;
+			return method.GetCacheLifeSpan(Client);
 		}
 	}
 }
