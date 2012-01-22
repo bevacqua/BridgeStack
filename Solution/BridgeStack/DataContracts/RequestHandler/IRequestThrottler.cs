@@ -36,13 +36,13 @@ namespace BridgeStack
 		int MaxConcurrentRequests { get; set; }
 
 		/// <summary>
-		/// The allowed maximum of requests in the sliding time window, at any given time.
+		/// The allowed maximum of requests in the sliding timeframe window, at any given time.
 		/// </summary>
-		int MaxRequestsInWindow { get; set; }
+		int MaxRequestsInTimeframe { get; set; }
 
 		/// <summary>
-		/// The sliding time window duration.
+		/// The sliding timeframe window duration.
 		/// </summary>
-		TimeSpan SlidingTimeWindow { get; set; }
+		TimeSpan SlidingTimeframe { get; set; }
 	}
 }

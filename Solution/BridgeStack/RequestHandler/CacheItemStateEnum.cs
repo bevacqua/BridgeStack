@@ -10,7 +10,7 @@ namespace BridgeStack
 		/// </summary>
 		Processing,
 		/// <summary>
-		/// The response is cached and ready to use.
+		/// The response is cached and ready to access.
 		/// </summary>
 		Cached
 	}

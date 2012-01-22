@@ -59,32 +59,32 @@ namespace BridgeStack
 		public int MaxConcurrentRequests { get; set; }
 
 		/// <summary>
-		/// The allowed maximum of requests in the sliding time window, at any given time.
+		/// The allowed maximum of requests in the sliding timeframe window, at any given time.
 		/// </summary>
-		public int MaxRequestsInWindow { get; set; }
+		public int MaxRequestsInTimeframe { get; set; }
 
 		/// <summary>
-		/// The sliding time window duration.
+		/// The sliding timeframe window duration.
 		/// </summary>
-		public TimeSpan SlidingTimeWindow { get; set; }
+		public TimeSpan SlidingTimeframe { get; set; }
 
 		/// <summary>
-		/// Concurrent queue registry storing the times at which requests were introduced.
+		/// Concurrent queue registry storing the time at which requests were introduced.
 		/// </summary>
-		private readonly ConcurrentQueue<DateTime> _requestTimes;
+		private readonly ConcurrentQueue<DateTime> _requestStartTime;
 
 		/// <summary>
 		/// Instances a request throttler object.
 		/// </summary>
 		/// <param name="maxConcurrentRequests">The allowed maximum of requests to be concurrently performed. Defaults at 15.</param>
 		/// <param name="maxRequestsInWindow">The allowed maximum of requests in the sliding time window, at any given time. Defaults at 30.</param>
-		/// <param name="slidingTimeWindowInSeconds">The sliding time window duration in seconds. Defaults at 3 seconds.</param>
-		public RequestThrottler(int maxConcurrentRequests = 15, int maxRequestsInWindow = 30, int slidingTimeWindowInSeconds = 3)
+		/// <param name="slidingTimeframe">The sliding timeframe window duration in seconds. Defaults at 3 seconds.</param>
+		public RequestThrottler(int maxConcurrentRequests = 15, int maxRequestsInWindow = 30, int slidingTimeframe = 3)
 		{
 			MaxConcurrentRequests = maxConcurrentRequests;
-			MaxRequestsInWindow = maxRequestsInWindow;
-			SlidingTimeWindow = TimeSpan.FromSeconds(slidingTimeWindowInSeconds);
-			_requestTimes = new ConcurrentQueue<DateTime>();
+			MaxRequestsInTimeframe = maxRequestsInWindow;
+			SlidingTimeframe = TimeSpan.FromSeconds(slidingTimeframe);
+			_requestStartTime = new ConcurrentQueue<DateTime>();
 		}
 
 		/// <summary>
@@ -95,20 +95,20 @@ namespace BridgeStack
 		/// <returns>The API response object.</returns>
 		public IApiResponse<T> Throttle<T>(string endpoint) where T : class
 		{
-			while (ConcurrentRequests > MaxConcurrentRequests)
+			while (ConcurrentRequests >= MaxConcurrentRequests)
 			{
 				using (AutoResetEvent signal = new AutoResetEvent(false))
 				{
 					signal.WaitOne(100);
 				}
 			}
-			if (_requestTimes.Count >= MaxRequestsInWindow)
+			if (_requestStartTime.Count >= MaxRequestsInTimeframe)
 			{
 				DateTime start;
-				if (_requestTimes.TryDequeue(out start))
+				if (_requestStartTime.TryDequeue(out start))
 				{
 					TimeSpan delta = DateTime.Now - start;
-					TimeSpan delay = SlidingTimeWindow - delta;
+					TimeSpan delay = SlidingTimeframe - delta;
 					if (delay > TimeSpan.Zero)
 					{
 						using (AutoResetEvent signal = new AutoResetEvent(false))
@@ -118,7 +118,7 @@ namespace BridgeStack
 					}
 				}
 			}
-			_requestTimes.Enqueue(DateTime.Now);
+			_requestStartTime.Enqueue(DateTime.Now);
 			return PerformRequest<T>(endpoint);
 		}
 

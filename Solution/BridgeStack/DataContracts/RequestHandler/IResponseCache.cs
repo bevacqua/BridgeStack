@@ -10,8 +10,9 @@ namespace BridgeStack
 		/// </summary>
 		/// <typeparam name="T">The strong type in <see cref="IResponseCacheItem{T}"/>.</typeparam>
 		/// <param name="endpoint">The API endpoint</param>
+		/// <param name="pushEmpty">True to push an empty value into the cache if the endpoint isn't present yet.</param>
 		/// <returns>Returns an API response cache item if successful, null otherwise.</returns>
-		IResponseCacheItem<T> Get<T>(string endpoint) where T : class;
+		IResponseCacheItem<T> Get<T>(string endpoint, bool pushEmpty = false) where T : class;
 		/// <summary>
 		/// Attempts to push API responses into the cache store.
 		/// </summary>

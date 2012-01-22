@@ -92,7 +92,7 @@ namespace BridgeStack
 		/// <returns>The API response object.</returns>
 		private IApiResponse<T> FetchFromCache<T>(string endpoint) where T : class
 		{
-			IResponseCacheItem<T> cacheItem = Client.Cache.Get<T>(endpoint);
+			IResponseCacheItem<T> cacheItem = Client.Cache.Get<T>(endpoint, true);
 			if (cacheItem != null)
 			{
 				IApiResponse<T> result = cacheItem.Response;
