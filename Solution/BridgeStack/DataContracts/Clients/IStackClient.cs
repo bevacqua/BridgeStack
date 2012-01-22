@@ -1,5 +1,4 @@
 using System;
-using BridgeStack;
 
 namespace BridgeStack
 {
@@ -17,7 +16,19 @@ namespace BridgeStack
 		/// <summary>
 		/// The default values for this client.
 		/// </summary>
-		IStackClientDefaults Default { get; }
+		IDefaults Default { get; }
+		/// <summary>
+		/// Event log message dispatcher.
+		/// </summary>
+		IEventLog EventLog { get; }
+		/// <summary>
+		/// Internal response cache store for the API.
+		/// </summary>
+		IResponseCache Cache { get; }
+		/// <summary>
+		/// Request throttler implementation instance.
+		/// </summary>
+		IRequestThrottler Throttler { get; }
 
 		#region API
 
@@ -197,7 +208,7 @@ namespace BridgeStack
 		IBridgeResponseItem<ApiException> SimulateError(int id, SiteQuery parameters = null);
 
 		#endregion
-		
+
 		#region Posts
 
 		/// <summary>
@@ -1090,7 +1101,7 @@ namespace BridgeStack
 		/// <param name="id">The single filter in {ids}.</param>
 		/// <returns>Returns the filter identified by <paramref name="id"/>.</returns>
 		IBridgeResponseItem<Filter> GetNetworkFilter(string id);
-		
+
 		/// <summary>
 		/// Makes a request to API method /sites
 		/// <para>Documentation can be found following the link below:</para>

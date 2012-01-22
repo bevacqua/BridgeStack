@@ -19,7 +19,7 @@ namespace BridgeStack
 		/// <returns>An instance of StackClient.</returns>
 		public IStackClient Create(string appKey)
 		{
-			return new StackClient(new RequestHandler(), appKey);
+			return new StackClient(appKey, InstancePlugins());
 		}
 		/// <summary>
 		/// Instantiates an AuthorizedStackClient using an access token.
@@ -29,7 +29,23 @@ namespace BridgeStack
 		/// <returns>An instance of AuthorizedStackClient.</returns>
 		public IAuthorizedStackClient Create(string appKey, string accessToken)
 		{
-			return new AuthorizedStackClient(new RequestHandler(), appKey, accessToken);
+			return new AuthorizedStackClient(appKey, accessToken, InstancePlugins());
+		}
+
+		/// <summary>
+		/// Creates a default instance of the plugin container for a StackClient.
+		/// </summary>
+		/// <returns></returns>
+		private StackClientPlugins InstancePlugins()
+		{
+			StackClientPlugins plugins = new StackClientPlugins(
+				new Defaults(),
+				new RequestHandler(),
+				new EventLog(),
+				new ResponseCache(),
+				new RequestThrottler()
+			);
+			return plugins;
 		}
 	}
 }

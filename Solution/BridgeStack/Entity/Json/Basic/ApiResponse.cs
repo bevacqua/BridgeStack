@@ -7,7 +7,7 @@ namespace BridgeStack
 	/// Strongly typed interface for the API response common "wrapper" object.
 	/// <para>https://api.stackexchange.com/docs/wrapper</para>
 	/// </summary>
-	public sealed class ApiResponse<T> : IApiResponse<T>
+	public sealed class ApiResponse<T> : IApiResponse<T> where T : class
 	{
 		/// <summary>
 		/// The request's response as is, in dynamic format.

@@ -14,7 +14,7 @@ namespace BridgeStack
 		/// <param name="query">The query string parameters object.</param>
 		/// <param name="defaults">The client defaults.</param>
 		/// <returns>The query string parameters with default values applied.</returns>
-		public static IQuery WithDefault(this IQuery query, IStackClientDefaults defaults)
+		public static IQuery WithDefault(this IQuery query, IDefaults defaults)
 		{
 			if (query is ISiteQuery)
 			{

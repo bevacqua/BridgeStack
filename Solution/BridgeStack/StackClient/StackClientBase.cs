@@ -11,23 +11,33 @@ namespace BridgeStack
 		/// The local request handler instance.
 		/// </summary>
 		private readonly IRequestHandler _requestHandler;
+
 		/// <summary>
-		/// The application's key. Grants a higher request quota.
+		/// Request throttler implementation instance.
 		/// </summary>
-		private readonly string _appKey;
+		public IRequestThrottler Throttler { get; protected set; }
 
 		/// <summary>
 		/// The application's key. Grants a higher request quota.
 		/// </summary>
-		public string AppKey
-		{
-			get { return _appKey; }
-		}
+		public string AppKey { get; protected internal set; }
 
 		/// <summary>
 		/// The default values for this client.
 		/// </summary>
-		public IStackClientDefaults Default { get; private set; }
+		public IDefaults Default { get; protected internal set; }
+
+		/// <summary>
+		/// Event log message dispatcher.
+		/// </summary>
+		public IEventLog EventLog { get; protected internal set; }
+
+		/// <summary>
+		/// API Response cache store.
+		/// </summary>
+		public IResponseCache Cache { get; protected internal set; }
+
+		#region IStackClient Implementation
 
 		/// <summary>
 		/// Makes a request to API method /answers
@@ -1134,35 +1144,53 @@ namespace BridgeStack
 		/// <returns>Returns all sites in the network.</returns>
 		public abstract IBridgeResponseCollection<NetworkSite> GetNetworkSites(SimpleQuery parameters = null);
 
+		#endregion
+
 		/// <summary>
 		/// Instances the StackClientBase implementation.
 		/// </summary>
-		/// <param name="requestHandler">A request handler for this client.</param>
 		/// <param name="appKey">The application's key. Grants a higher request quota.</param>
-		protected StackClientBase(IRequestHandler requestHandler, string appKey)
+		/// <param name="plugins">The plugins to register with this StackClientBase instance.</param>
+		protected StackClientBase(string appKey, StackClientPlugins plugins)
 		{
-			if (requestHandler == null)
-			{
-				throw new ArgumentNullException("requestHandler");
-			}
-			if (requestHandler == null)
+			if (appKey == null)
 			{
 				throw new ArgumentNullException("appKey");
 			}
-			_requestHandler = requestHandler;
-			_appKey = appKey;
+			if (plugins == null)
+			{
+				throw new ArgumentNullException("plugins");
+			}
+			AppKey = appKey;
 
-			Default = new StackClientDefaults();
+			Default = plugins.Default;
+			Default.Client = this;
+
+			_requestHandler = plugins.RequestHandler;
+			_requestHandler.Client = this;
+
+			EventLog = plugins.EventLog;
+			EventLog.Client = this;
+
+			Cache = plugins.Cache;
+			Cache.Client = this;
+
+			Throttler = plugins.Throttler;
+			Throttler.Client = this;
 		}
+
+		#region API Request Processing
 
 		/// <summary>
 		/// Creates an appropriate instance of an API endpoint builder.
 		/// </summary>
 		/// <param name="method">The method on the API to be called.</param>
+		/// <param name="vectors">The request vectors to serialize for this API call.</param>
 		/// <returns>An API endpoint builder instance.</returns>
-		private IApiEndpointBuilder GetApiEndpointBuilder(string method)
+		protected IApiEndpointBuilder GetApiEndpointBuilder(string method, IRequestVector[] vectors = null)
 		{
-			return new ApiEndpointBuilder(this, method, _appKey);
+			IApiEndpointBuilder builder = new ApiEndpointBuilder(this, method, AppKey);
+			return vectors == null ? builder : builder.Vectorized(vectors);
 		}
 
 		/// <summary>
@@ -1195,7 +1223,7 @@ namespace BridgeStack
 			where TResult : class
 			where TQuery : class, IQuery, new()
 		{
-			IApiEndpointBuilder builder = GetApiEndpointBuilder(method).Vectorized(vectors).Params(parameters ?? new TQuery());
+			IApiEndpointBuilder builder = GetApiEndpointBuilder(method, vectors).Params(parameters ?? new TQuery());
 			IBridgeResponseCollection<TResult> result = _requestHandler.ProcessRequest<TResult>(builder);
 			return result;
 		}
@@ -1262,6 +1290,8 @@ namespace BridgeStack
 		{
 			return GetApiResultCollection<TResult, TQuery>(method, vectors, parameters).Single();
 		}
+
+		#endregion
 
 		#region Request Vectors
 

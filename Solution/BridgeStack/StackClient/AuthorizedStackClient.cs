@@ -7,29 +7,22 @@ namespace BridgeStack
 		/// <summary>
 		/// The user's access token. Grants authentication and access to methods which require that the application be acting on behalf of a user in order to be invoked.
 		/// </summary>
-		private readonly string _accessToken;
-		/// <summary>
-		/// The user's access token. Grants authentication and access to methods which require that the application be acting on behalf of a user in order to be invoked.
-		/// </summary>
-		public string AccessToken
-		{
-			get { return _accessToken; }
-		}
+		public string AccessToken { get; internal set; }
 
 		/// <summary>
-		/// Instances the AuthroizedStackClient implementation.
+		/// Instances the AuthorizedStackClient implementation.
 		/// </summary>
-		/// <param name="requestHandler">A request handler for this client.</param>
 		/// <param name="appKey">The application's key. Grants a higher request quota.</param>
 		/// <param name="accessToken">The user's access token. Grants authentication and access to methods which require that the application be acting on behalf of a user in order to be invoked.</param>
-		public AuthorizedStackClient(IRequestHandler requestHandler, string appKey, string accessToken)
-			: base(requestHandler, appKey)
+		/// <param name="plugins">The plugins to register with this AuthorizedStackClient instance.</param>
+		internal AuthorizedStackClient(string appKey, string accessToken, StackClientPlugins plugins)
+			: base(appKey, plugins)
 		{
 			if (accessToken == null)
 			{
 				throw new ArgumentNullException("accessToken");
 			}
-			_accessToken = accessToken;
+			AccessToken = accessToken;
 		}
 
 		#region IAuthorizedStackClient Implementation

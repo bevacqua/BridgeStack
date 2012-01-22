@@ -39,7 +39,7 @@ A `StackClient` instance is created, passing in your application's key and the u
 ```c#
     client.Default.Site = NetworkSiteEnum.StackOverflow;
 ```
-A default is set so that all requests made through this client which require a target site use [Stack Overflow][4]
+A default is set so that all requests made through this client which require a target site use [Stack Overflow][4].
 
 ```c#
 var parameters = new BadgesOnUserQuery
@@ -72,7 +72,7 @@ About
 I created this library as a way to give back to the [StackOverflow][3] community, which has helped me out and taught me on countless ocassions.  
 At all times I attempted to mantain the same philosophy in writting this library. I documented every method, reused as much code as possibly, mirrored the API as heavily as possible, and generally designed it with wrapping away complexity in mind.
 
-BridgeStack is licensed under GNU/GPL.
+_BridgeStack_ is licensed under GNU/GPL.
 
   [2]: http://stackexchange.com
   [3]: http://stackoverflow.com

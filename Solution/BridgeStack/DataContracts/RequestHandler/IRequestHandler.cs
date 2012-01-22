@@ -5,7 +5,7 @@ namespace BridgeStack
 	/// <summary>
 	/// Object in charge of processing API requests, and deciding whether to access the API or return results from the internal cache instead.
 	/// </summary>
-	internal interface IRequestHandler
+	internal interface IRequestHandler : IStackClientPlugin
 	{
 		/// <summary>
 		/// Processes a request, attempting to retrieve results from the cache whenever possible, and making API calls otherwise.

@@ -3,19 +3,26 @@ namespace BridgeStack
 	/// <summary>
 	/// Default values for queries coming from a particular client instance.
 	/// </summary>
-	public interface IStackClientDefaults
+	internal sealed class Defaults : IDefaults
 	{
 		/// <summary>
 		/// Default filter for all requests.
 		/// </summary>
-		string Filter { get; set; }
+		public string Filter { get; set; }
+
 		/// <summary>
 		/// Default page size for all requests.
 		/// </summary>
-		int? PageSize { get; set; }
+		public int? PageSize { get; set; }
+
 		/// <summary>
 		/// Default target network site for all requests.
 		/// </summary>
-		string Site { get; set; }
+		public string Site { get; set; }
+
+		/// <summary>
+		/// The parent <see cref="IStackClient"/>.
+		/// </summary>
+		public IStackClient Client { get; set; }
 	}
 }

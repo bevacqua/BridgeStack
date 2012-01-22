@@ -8,7 +8,7 @@ namespace BridgeStack
 	/// <para>https://api.stackexchange.com/docs/wrapper</para>
 	/// </summary>
 	/// <typeparam name="T">The strong type for elements in the <see cref="Items"/> collections.</typeparam>
-	public interface IApiResponse<T> : IApiResponse
+	public interface IApiResponse<T> : IApiResponse where T : class
 	{
 		/// <summary>
 		/// The list of <see cref="IApiResponse.Type"/> returned by the API response.

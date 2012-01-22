@@ -10,10 +10,10 @@ namespace BridgeStack
 		/// <summary>
 		/// Instances the StackClient implementation.
 		/// </summary>
-		/// <param name="requestHandler">A request handler for this client.</param>
 		/// <param name="appKey">The application's key. Grants a higher request quota.</param>
-		public StackClient(IRequestHandler requestHandler, string appKey)
-			: base(requestHandler, appKey)
+		/// <param name="plugins">The plugins to register with this StackClient instance.</param>
+		internal StackClient(string appKey, StackClientPlugins plugins)
+			: base(appKey, plugins)
 		{
 		}
 
@@ -1125,7 +1125,7 @@ namespace BridgeStack
 		{
 			return GetApiResultCollection<User, UsersQuery>("users/moderators/elected", parameters);
 		}
-		
+
 		/// <summary>
 		/// Makes a request to API method /users/{ids}/associated
 		/// <para>Documentation can be found following the link below:</para>

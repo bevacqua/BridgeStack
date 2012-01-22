@@ -45,9 +45,23 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="ApiResponseCache.cs" />
-    <Compile Include="ApiResponseStore.cs" />
+    <Compile Include="RequestHandler\ResponseCacheItem.cs" />
+    <Compile Include="RequestHandler\ResponseCache.cs" />
+    <Compile Include="DataContracts\RequestHandler\IRequestThrottler.cs" />
+    <Compile Include="EventLog\EventSeverityEnum.cs" />
+    <Compile Include="DataContracts\EventLog\IEventLog.cs" />
     <Compile Include="Extensions\IBridgeResponseCollection.cs" />
+    <Compile Include="EventLog\EventLog.cs" />
+    <Compile Include="RequestHandler\CacheItemStateEnum.cs" />
+    <Compile Include="DataContracts\EventLog\IEventLoggedArgs.cs" />
+    <Compile Include="DataContracts\Clients\IStackClientPlugin.cs" />
+    <Compile Include="EventLog\OnEventLogged.cs" />
+    <Compile Include="EventLog\OnEventLoggedArgs.cs" />
+    <Compile Include="Resources\Events.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Events.resx</DependentUpon>
+    </Compile>
     <Compile Include="StackClient\AuthorizedStackClient.cs" />
     <Compile Include="BridgeResponseCollection.cs" />
     <Compile Include="ApiWebClient.cs">
@@ -84,13 +98,13 @@
     <Compile Include="Extensions\UnixDateTime.cs" />
     <Compile Include="Helpers\UnixTimeSpanConverter.cs" />
     <Compile Include="Extensions\UnixTimeSpan.cs" />
-    <Compile Include="Interface\IAuthorizedStackClient.cs" />
-    <Compile Include="Interface\IBridgeResponseData.cs" />
-    <Compile Include="Interface\IOAuthScope.cs" />
-    <Compile Include="Interface\IOAuthState.cs" />
-    <Compile Include="Interface\IStackClientDefaults.cs" />
+    <Compile Include="DataContracts\Clients\IAuthorizedStackClient.cs" />
+    <Compile Include="DataContracts\IBridgeResponseData.cs" />
+    <Compile Include="DataContracts\Clients\IOAuthScope.cs" />
+    <Compile Include="DataContracts\Clients\IOAuthState.cs" />
+    <Compile Include="DataContracts\Clients\IDefaults.cs" />
     <Compile Include="OAuthClient\OAuthState.cs" />
-    <Compile Include="StackClient\StackClientDefaults.cs" />
+    <Compile Include="StackClient\Defaults.cs" />
     <Compile Include="OAuthClient\OAuthScope.cs" />
     <Compile Include="Resources\EndpointBuilder.Designer.cs">
       <AutoGen>True</AutoGen>
@@ -210,15 +224,15 @@
     <Compile Include="Entity\QueryParameters\Basic\SiteQuery.cs" />
     <Compile Include="Entity\QueryParameters\Specialized\SuggestedEditsQuery.cs" />
     <Compile Include="OAuthClient\OAuthClientFactory.cs" />
-    <Compile Include="Interface\IOAuthClient.cs" />
+    <Compile Include="DataContracts\Clients\IOAuthClient.cs" />
     <Compile Include="OAuthClient\OAuthClient.cs" />
-    <Compile Include="Interface\IApiResponseStore.cs" />
-    <Compile Include="Interface\IApiResponseCache.cs" />
-    <Compile Include="Interface\IBridgeResponse.cs" />
-    <Compile Include="Interface\IBridgeResponseCollection.cs" />
-    <Compile Include="Interface\IBridgeResponseItem.cs" />
-    <Compile Include="Interface\IRequestHandler.cs" />
-    <Compile Include="RequestHandler.cs" />
+    <Compile Include="DataContracts\RequestHandler\IResponseCache.cs" />
+    <Compile Include="DataContracts\RequestHandler\IResponseCacheItem.cs" />
+    <Compile Include="DataContracts\IBridgeResponse.cs" />
+    <Compile Include="DataContracts\IBridgeResponseCollection.cs" />
+    <Compile Include="DataContracts\IBridgeResponseItem.cs" />
+    <Compile Include="DataContracts\RequestHandler\IRequestHandler.cs" />
+    <Compile Include="RequestHandler\RequestHandler.cs" />
     <Compile Include="Resources\OAuth.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -229,12 +243,14 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Shared.resx</DependentUpon>
     </Compile>
+    <Compile Include="RequestHandler\RequestThrottler.cs" />
     <Compile Include="StackClient\StackClient.cs" />
-    <Compile Include="Interface\IStackClient.cs" />
+    <Compile Include="DataContracts\Clients\IStackClient.cs" />
     <Compile Include="StackClient\StackClientBase.cs" />
     <Compile Include="StackClient\StackClientFactory.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="BridgeResponseItem.cs" />
+    <Compile Include="StackClient\StackClientPlugins.cs" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Resources\EndpointBuilder.resx">
@@ -246,6 +262,10 @@
       <LastGenOutput>Error.Designer.cs</LastGenOutput>
       <SubType>Designer</SubType>
     </EmbeddedResource>
+    <EmbeddedResource Include="Resources\Events.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Events.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
     <EmbeddedResource Include="Resources\OAuth.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>OAuth.Designer.cs</LastGenOutput>
@@ -255,6 +275,9 @@
       <LastGenOutput>Shared.Designer.cs</LastGenOutput>
       <SubType>Designer</SubType>
     </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Interface\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
