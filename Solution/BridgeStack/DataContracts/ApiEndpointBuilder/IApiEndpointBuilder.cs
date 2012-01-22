@@ -26,7 +26,7 @@ namespace BridgeStack
 		/// <summary>
 		/// The API method to target.
 		/// </summary>
-		ApiEndpointEnum ApiMethod { get; set; }
+		ApiMethodEnum ApiMethod { get; set; }
 		/// <summary>
 		/// The application's key. Grants a higher request quota.
 		/// </summary>

@@ -5,7 +5,7 @@ namespace BridgeStack
 	/// <summary>
 	/// API method endpoints enumeration.
 	/// </summary>
-	public enum ApiEndpointEnum
+	public enum ApiMethodEnum
 	{
 		#region Answers
 

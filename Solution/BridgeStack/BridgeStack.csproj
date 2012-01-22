@@ -45,7 +45,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="DataContracts\ApiEndpointBuilder\ApiEndpointEnum.cs" />
+    <Compile Include="DataContracts\ApiEndpointBuilder\ApiMethodEnum.cs" />
     <Compile Include="Extensions\Enum.cs" />
     <Compile Include="RequestHandler\ResponseCacheItem.cs" />
     <Compile Include="RequestHandler\ResponseCache.cs" />

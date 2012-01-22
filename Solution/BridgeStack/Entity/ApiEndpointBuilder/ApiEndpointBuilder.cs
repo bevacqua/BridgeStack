@@ -61,7 +61,7 @@ namespace BridgeStack
 		/// <summary>
 		/// The API method to target.
 		/// </summary>
-		public ApiEndpointEnum ApiMethod { get; set; }
+		public ApiMethodEnum ApiMethod { get; set; }
 
 		/// <summary>
 		/// The application's key. Grants a higher request quota.
@@ -102,7 +102,7 @@ namespace BridgeStack
 		/// <param name="method">The API method to target.</param>
 		/// <param name="appKey">The application's key. Grants a higher request quota.</param>
 		/// <param name="accessToken">The user's access token. Grants authentication and access to methods which require that the application be acting on behalf of a user in order to be invoked.</param>
-		public ApiEndpointBuilder(IStackClient client, ApiEndpointEnum? method, string appKey = null, string accessToken = null)
+		public ApiEndpointBuilder(IStackClient client, ApiMethodEnum? method, string appKey = null, string accessToken = null)
 			: this()
 		{
 			if (client == null)
