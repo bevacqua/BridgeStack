@@ -83,11 +83,13 @@ namespace BridgeStack
 		/// <summary>
 		/// https://api.stackexchange.com/docs/errors
 		/// </summary>
+		[CacheLifeSpan(1)]
 		[EnumMember(Value = "errors")]
 		Errors,
 		/// <summary>
 		/// https://api.stackexchange.com/docs/simulate-errors
 		/// </summary>
+		[CacheLifeSpan(1)]
 		[EnumMember(Value = "errors/{id}")]
 		SimulateError,
 
@@ -128,6 +130,7 @@ namespace BridgeStack
 		/// <summary>
 		/// https://api.stackexchange.com/docs/privileges
 		/// </summary>
+		[CacheLifeSpan(1)]
 		[EnumMember(Value = "privileges")]
 		Privileges,
 
@@ -420,11 +423,13 @@ namespace BridgeStack
 		/// <summary>
 		/// https://api.stackexchange.com/docs/filter-create
 		/// </summary>
+		[CacheLifeSpan(1)]
 		[EnumMember(Value = "filter/create")]
 		FilterCreate,
 		/// <summary>
 		/// https://api.stackexchange.com/docs/read-filter
 		/// </summary>
+		[CacheLifeSpan(1)]
 		[EnumMember(Value = "filter/{filters}/read")]
 		ReadFilter,
 

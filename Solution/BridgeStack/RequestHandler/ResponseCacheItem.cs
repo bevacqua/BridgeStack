@@ -35,7 +35,7 @@ namespace BridgeStack
 			get
 			{
 				TimeSpan lifeSpan = LifeSpan;
-				if (State == CacheItemStateEnum.Processing) // time out consistently during requests.
+				if (State == CacheItemStateEnum.Processing) // time out consistently during request processing.
 				{
 					lifeSpan = DefaultLifeSpan;
 				}
