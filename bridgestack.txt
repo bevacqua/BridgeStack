@@ -1,0 +1,11 @@
+HIGH intelli-filtering (and intelli-loading? how..)
+med ext methods to load answers for questions, etc.
+is yield enough?
+
+HIGH parallel-enabled dedicated client, is this even needed?
+
+MED: remove auth stackclient, favor route attributes telling to
+the endpointbuilder whether the method endpoint requires auth
+
+
+MED: remover client / parent de clases, pasar por ctor -> inyectar luego

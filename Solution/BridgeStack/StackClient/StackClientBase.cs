@@ -15,7 +15,7 @@ namespace BridgeStack
 		/// <summary>
 		/// Request throttler implementation instance.
 		/// </summary>
-		public IRequestThrottler Throttler { get; protected set; }
+		public IRequestThrottler Throttler { get; protected internal set; }
 
 		/// <summary>
 		/// The application's key. Grants a higher request quota.

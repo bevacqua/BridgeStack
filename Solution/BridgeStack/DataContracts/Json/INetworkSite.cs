@@ -28,6 +28,7 @@ namespace BridgeStack
 		/// <summary>
 		/// The type of site.
 		/// </summary>
+		[JsonConverter(typeof(StringEnumConverter))]
 		[JsonProperty("site_type")]
 		SiteTypeEnum? SiteType { get; set; }
 		/// <summary>

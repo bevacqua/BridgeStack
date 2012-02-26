@@ -1,0 +1,5 @@
+https://github.com/bevacqua/BridgeStack
+
+http://stackapps.com/questions/2945/bridgestack-net-client-library-with-full-2-0-support
+
+https://api.stackexchange.com/docs

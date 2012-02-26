@@ -119,7 +119,7 @@ namespace BridgeStack
 		/// Invokes <see cref="OnEventLogged"/> on all associated event delegates.
 		/// </summary>
 		/// <param name="args">The event arguments.</param>
-		private void InvokeEventLogged(OnEventLoggedArgs args)
+		internal void InvokeEventLogged(OnEventLoggedArgs args)
 		{
 			if (OnEventLogged != null)
 				OnEventLogged(Client, args);

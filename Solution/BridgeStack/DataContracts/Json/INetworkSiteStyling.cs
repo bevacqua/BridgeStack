@@ -23,6 +23,6 @@ namespace BridgeStack
 		/// Background color for tags.
 		/// </summary>
 		[JsonProperty("tag_background_color")]
-		String TagBackgroundColor { get; set; }
+		string TagBackgroundColor { get; set; }
 	}
 }

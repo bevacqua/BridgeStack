@@ -43,14 +43,14 @@ namespace BridgeStack
 			{
 				throw new ArgumentNullException("builder");
 			}
-			IApiResponse<T> result = null;
+			IApiResponse<T> response = null;
 			try
 			{
-				result = InternalProcessing<T>(builder); // Source = Api | Cache
+				response = InternalProcessing<T>(builder); // Source = Api | Cache
 			}
 			catch (BridgeException api)
 			{
-				result = new ApiResponse<T> // Source = BridgeException
+				response = new ApiResponse<T> // Source = BridgeException
 				{
 					Exception = api,
 					Source = ResultSourceEnum.BridgeException
@@ -58,16 +58,20 @@ namespace BridgeStack
 			}
 			catch (WebException web)
 			{
-				result = HandleWebException<T>(web); // Source = ApiException
+				response = HandleWebException<T>(web); // Source = ApiException
 			}
 			finally
 			{
-				if (result != null && result.Source != ResultSourceEnum.Cache)
+				if (response != null)
 				{
-					Client.Cache.Push(builder, result);
+					response.SourceClient = Client;
+					if (response.Source != ResultSourceEnum.Cache)
+					{
+						Client.Cache.Push(builder, response);
+					}
 				}
 			}
-			return result;
+			return response;
 		}
 
 		/// <summary>
@@ -78,8 +82,8 @@ namespace BridgeStack
 		/// <returns>The API response object.</returns>
 		private IApiResponse<T> InternalProcessing<T>(IApiEndpointBuilder builder) where T : class
 		{
-			IApiResponse<T> result = FetchFromCache<T>(builder);
-			return result ?? FetchFromThrottler<T>(builder);
+			IApiResponse<T> response = FetchFromCache<T>(builder);
+			return response ?? FetchFromThrottler<T>(builder);
 		}
 
 		/// <summary>
@@ -93,9 +97,9 @@ namespace BridgeStack
 			IResponseCacheItem<T> cacheItem = Client.Cache.Get<T>(builder, true);
 			if (cacheItem != null)
 			{
-				IApiResponse<T> result = cacheItem.Response;
-				result.Source = ResultSourceEnum.Cache;
-				return result;
+				IApiResponse<T> response = cacheItem.Response;
+				response.Source = ResultSourceEnum.Cache;
+				return response;
 			}
 			return null;
 		}

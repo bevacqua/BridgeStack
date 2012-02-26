@@ -29,6 +29,11 @@ namespace BridgeStack
 		[JsonIgnore]
 		ResultSourceEnum Source { get; set; }
 		/// <summary>
+		/// The <see cref="IStackClient"/> which produced this API response.
+		/// </summary>
+		[JsonIgnore]
+		IStackClient SourceClient { get; set; }
+		/// <summary>
 		/// The remaining amount of API calls that can be executed.
 		/// </summary>
 		[JsonProperty("quota_remaining")]

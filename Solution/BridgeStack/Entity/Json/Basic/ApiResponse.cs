@@ -1,5 +1,4 @@
 using System.Collections.Generic;
-using BridgeStack;
 
 namespace BridgeStack
 {
@@ -23,6 +22,11 @@ namespace BridgeStack
 		/// Indicates the different sources that can be offered by <see cref="IApiResponse{T}"/> implementations.
 		/// </summary>
 		public ResultSourceEnum Source { get; set; }
+
+		/// <summary>
+		/// The <see cref="IStackClient"/> which produced this API response.
+		/// </summary>
+		public IStackClient SourceClient { get; set; }
 
 		/// <summary>
 		/// The remaining amount of API calls that can be executed.
@@ -50,7 +54,7 @@ namespace BridgeStack
 		public long? Total { get; set; }
 
 		/// <summary>
-		/// The type of elements being returned in the <see cref="IApiResponse{T}.Items"/>  collection.
+		/// The type of elements being returned in the <see cref="IApiResponse{T}.Items"/> collection.
 		/// </summary>
 		public string Type { get; set; }
 

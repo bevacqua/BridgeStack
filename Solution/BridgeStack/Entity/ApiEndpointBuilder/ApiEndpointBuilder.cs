@@ -117,12 +117,13 @@ namespace BridgeStack
 			ApiMethod = method.Value;
 			AppKey = appKey;
 			AccessToken = accessToken;
+			_out = new Lazy<string>(Build);
 		}
 
 		/// <summary>
 		/// The API endpoint built by this instance of an API endpoint builder.
 		/// </summary>
-		private string _out;
+		private Lazy<string> _out;
 
 		/// <summary>
 		/// Builds and returns the target endpoint Uri.
@@ -141,7 +142,6 @@ namespace BridgeStack
 			}
 			string parameters = BuildParameters();
 			string endpoint = EndpointBuilder.Endpoint.FormatWith(ApiEndpoint, method, parameters);
-			_out = endpoint;
 			return endpoint;
 		}
 
@@ -211,7 +211,7 @@ namespace BridgeStack
 		/// <returns>The endpoint successfully built, or throws an exception.</returns>
 		public override string ToString()
 		{
-			return _out ?? Build();
+			return _out.Value;
 		}
 	}
 }
